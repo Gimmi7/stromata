@@ -20,18 +20,18 @@ To decrypt a message, you multiply it by itself priv times and you get back to t
 
 ## derivation process
 
-$p,q$ : two  random  secret  primes.
-$n=p\times q$ : n is RSA max.
-$d_A$ ： random number such that $1<d_A<n-1$, the priv key.
-$Q_a: d_A\times Q_a \equiv 1 \pmod{n}$, the pub key.
+\\( p,q \\) : two  random  secret  primes. \
+\\( n=p\times q \\) : n is RSA max. \
+\\( d_A \\) ： random number such that \\( 1<d_A<n-1 \\), the priv key. \
+\\( Q_a: d_A\times Q_a \equiv 1 \pmod{n} \\), the pub key.    \
 
-encrypt: $E_m= m^{Q_a} \pmod{n}$
+encrypt: \\( E_m= m^{Q_a} \pmod{n} \\)     \
 
-and encryptedMsg $E(m)$ is decrypted via
-$D_m= (E_m)^{d_A} \pmod{n}$
+and encryptedMsg \\( E(m) \\) is decrypted via    \
+\\( D_m= (E_m)^{d_A} \pmod{n} \\)    \
 
-as $d_A \times Q_a=1$
-so $D_m=(m^{Q_a})^{d_A}=m^{Q_a*d_A}=m^1=m$
+as \\( d_A \times Q_a=1 \\)  \
+so \\( D_m=(m^{Q_a})^{d_A}=m^{Q_a*d_A}=m^1=m \\)   \
 
 ## RSA is not an ideal system for the future of cryptography
 

@@ -6,10 +6,10 @@ A trapdoor function is a function that is easy to compute in one direction, yet 
 
 ## Why modulo
 
-make the compute irreversible.
-for example:
-$5\times x=500 \hspace{1cm} \rightarrow \hspace{1cm} x=500 \div 5=100 \\$
-$5 \times x \pmod{7}=3$, x may equal 2, may equal 16，may equal 100 ...
+make the compute irreversible. \
+for example: \
+\\( 5\times x=500 \hspace{1cm} \rightarrow \hspace{1cm} x=500 \div 5=100 \\) \
+\\( 5 \times x \pmod{7}=3 \\), x may equal 2, may equal 16，may equal 100 ...
 
 ## References
 
