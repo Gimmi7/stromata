@@ -57,7 +57,7 @@ export \\( (R, encryptedMsg) \\)
 
 \\( sk=R*d_A \\), then use sk to decrypt the encryptedMsg.
 
-**explanation:**
+**proof:**
 
 \\( sk=k\*Q_a=k\*d_A\*G=R*d_A \\)
 
@@ -72,7 +72,7 @@ The double-and-add method is an efficient algorithm for computing scalar multipl
   * if the i-th bit of k is 1, add P to the current value of Q.
 * The final value of Q is the result of the scalar multiplication of P by k.
 
-## ECC sign
+## ECDSA (Elliptic Curve Digital Signature Algorithm)
 
 **Signing the message:**
 
@@ -88,7 +88,7 @@ The double-and-add method is an efficient algorithm for computing scalar multipl
 * Calculate a Point \\(P=s^{-1}\*h\*G+ s^{-1}\*r\*Q_a \\)
 * If the x coordinate of P and R is equal, that means the signature is valid.
 
-**explanation:**
+**Proof:**
 
 we have: \\( P=s^{-1}\*h\*G + s^{-1}\*R\*Q_a \\)    \
 but \\( Q_a=d_A\*G \\)    \
@@ -106,14 +106,25 @@ and that is the equation used to generate the signature. so it matchs.
 Ethereum add additional v to recovery a unique public key.
 
 In the verifying step, we have: \\(P=s^{-1}\*h\*G + s^{-1}\*r\*Q_a \\)  \
-as P must match R : \\( R=s^{-1}\*h\*G + s^{-1}\*r\*Q_a \\)  \
+as P's x coordinate must match R : \\( R=s^{-1}\*h\*G + s^{-1}\*r\*Q_a \\)  \
 \\( s\*R= h\*G + r\*Q_a \\)  \
 \\( s\*R-h\*G=r\*Q_a \\)    \
 \\( sr^{-1}\*R - hr^{-1}\*G=Q_a \\) \
 
-the equation of seckp256k1 is: \\( y^2=x^3+7 \\), so R may have two points which was symmetrical of x-axis.Thus, Ethereum use v to define use positive R or negative R.
+the equation of seckp256k1 is: \\( y^2=x^3+7 \\), so R may have two points which was symmetrical of x-axis.Thus, Ethereum use v to define use positive R or negative R.It is a well-known fact that for every valid signature (r,s), the pair (r,-s) is also a valid signature.
+
+## The importance of random k
+
+Assume you have two signatures,both with the same k,then they will both have the same r value, and it means that you can calculate k using two s signatures with hash h and h' respectively:
+
+\\( s-s'=k^{-1}(h+d_A\*r) - k^{-1}(h'+d_A\*r)= k^{-1}(h+d_A\*r -h'-d_A\*r)= k^{-1}(h-h') \\)  \
+\\( k=\frac{h-h'}{s-s'} \\) \
+\\( d_A=\frac{s\*k-h}{r} \\)
+
+Sony PS3's ECDSA private key was leak by them same random k.This is also the reason why it is impossible to have a custom firmware above 3.56, simply because since the 3.56 version, Sony have fixed their ECDSA algorithm implementation and used new keys for which it is now impossible to find the private key.
 
 ## References
 
 * [Understanding-how-ECDSA-protects-your-data](https://www.instructables.com/Understanding-how-ECDSA-protects-your-data/)
 * [noble-secp256k1](https://github.com/paulmillr/noble-secp256k1)
+* [ecc-encryption-decryption](https://cryptobook.nakov.com/asymmetric-key-ciphers/ecc-encryption-decryption)
