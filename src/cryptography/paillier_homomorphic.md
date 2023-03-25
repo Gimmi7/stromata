@@ -103,6 +103,7 @@ accoording to Carmichael's theorem, we have:
 ## References
 
 * [Public-Key Cryptosystems Based on Composite Degree Residuosity Classes](https://link.springer.com/content/pdf/10.1007/3-540-48910-X_16.pdf)
+* [The Paillier Cryptomsysem](https://s68aa858fd10b80a7.jimcontent.com/download/version/0/module/4931760061/name/paillier.pdf)
 * [长安链同态加密方案设计文档](https://docs.chainmaker.org.cn/v1.2.4/html/tech/Paillier%E5%8D%8A%E5%90%8C%E6%80%81%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E6%96%B9%E6%A1%88%E4%BB%8B%E7%BB%8D.html)
 * [https://blog.csdn.net/caorui_nk/article/details/83305709#_18](https://blog.csdn.net/caorui_nk/article/details/83305709#_18)
 * [Composite number wiki](https://en.wikipedia.org/wiki/Composite_number)
@@ -113,3 +114,4 @@ accoording to Carmichael's theorem, we have:
 * [二项式定理](https://zh.wikipedia.org/zh-hans/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86)
 * [欧拉定理](https://zh.wikipedia.org/zh-hans/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA))
 * [二项式定理证明Paillier加密](https://cdcq.github.io/2022/04/17/20220417a/)
+* [Paillier 的高效实现](https://snowolf0620.xyz/index.php/crypto/459.html)
