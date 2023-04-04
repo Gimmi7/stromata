@@ -32,3 +32,4 @@
 
 * [Cognito: authentication-flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html)
 * [Cognito: API_GetId](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetId.html)
+* [Cognito: federation consolidate](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation-consolidate-users.html)
