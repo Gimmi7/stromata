@@ -27,3 +27,8 @@
 * Get **aws credential** (which can used to access **aws kms**) by Cognito token
 * Access aws kms to decrypt **encrypted data key**
 * Use **data key** to decrypt **encrypted share**
+
+## References
+
+* [Cognito: authentication-flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html)
+* [Cognito: API_GetId](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetId.html)
