@@ -16,7 +16,7 @@ For example, if n=10, the integers less than or equal to 10 thar are relatively 
 
 Carmicheal's function, denoted as \\( \lambda(n) \\) is a mathematical funtion that generalizes Euler's totient funtion \\( \phi(n) \\) and computes the smallest positive integer m such that \\( a^m\equiv 1\pmod{n} \\) for all integers a that are relatively prime to n.
 
-For example, if n=15, then \\( \lambda(15)=4 \\), because \\( 2^4\equiv 1\pmod{15}, 4^4\equiv 1\pmod{15} \\),while \\( \lambda(8)=2 \\), because \\( 3^2\equiv 1\pmod{8}, 5^2\equiv 1\pmod{8} \\).
+For example: \\( \lambda(8)=2 \\), because {1,3,5,7} are coprime to 8, \\( (1,3,5,7)^2\equiv 1\pmod{8}\\)
 
 ### Carmichael's theorem
 
