@@ -72,6 +72,29 @@
 
 * 选择两个大质数 p,q
 * 计算合数 n=pq
+* 计算最小通用指数 \\( \lambda(n)=lcm(p-1, q-1) \\)
+
+**加密:**
+
+加密的过程就是就是生成乘法子群的过程 \\( Z_n \times Z_n^\* \rightarrow Z_{n^2}^\*  \\)
+\\[ (m,r) \rightarrow g^m \cdot r^n \pmod{n^2} = c \\]
+m: plaintext message \
+r: random number for \\( Z_n^\* \\) \
+c: ciphertext
+
+**解密:**
+
+\\[ m=\frac{L(c^{\lambda} \bmod{n^2})}{L(g^{\lambda} \bmod{n^2})} \bmod{n} \\]
+\\[ L(x)=\frac{x-1}{n} \\]
+
+**证明:**
+
+\\( c^{\lambda} \bmod{n^2}= (g^m r^n)^{\lambda} \bmod{n^2}= g^{m\lambda}r^{n\lambda} \bmod{n^2} \\) \
+\\( \because r^{n\lambda} \equiv 1 \pmod{n^2}  \\)  \
+\\( \therefore c^{\lambda}=g^{m\lambda} \bmod{n^2} \\)
+\\( \because g^{\lambda} \equiv 1 \pmod{n} \quad \therefore g^{\lambda}=1+kn \\)   \
+\\( \therefore c^{\lambda}=g^{m\lambda} \bmod{n^2}= (1+kn)^m \bmod{n^2}=1+knm \bmod{n^2} \\)  \
+\\( Dec=\frac{knm}{kn} \bmod{n}= m \bmod{n}=m \\)
 
 ## References
 
