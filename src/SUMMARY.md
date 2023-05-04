@@ -15,6 +15,7 @@
   - [中国剩余定理](./mathmatics/crt.md)
 - [ZK-Paillier](./zkpaillier/index.md)
   - [Zero encrypt proof](./zkpaillier/zero_enc_proof.md)
+  - [Correct ciphertext proof](./zkpaillier/correct_ciphertext.md)
 - [Pratical MPC](./pratical_mpc.md)
 - [Particle Network](./particle_network.md)
 - [Lit Protocol](./lit_protocol.md)
