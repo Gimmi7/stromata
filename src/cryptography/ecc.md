@@ -123,6 +123,16 @@ Assume you have two signatures,both with the same k,then they will both have the
 
 Sony PS3's ECDSA private key was leak by them same random k.This is also the reason why it is impossible to have a custom firmware above 3.56, simply because since the 3.56 version, Sony have fixed their ECDSA algorithm implementation and used new keys for which it is now impossible to find the private key.
 
+## The cost of rho method
+
+> [Tho rho method cost list](http://safecurves.cr.yp.to/rho.html)
+
+地球上沙子的数量：
+
+地球半径约为6400km，用球的体积公式算下来，地球体积大约是1.098×10^12立方千米，合1.098×10^30 立方毫米。假设整个地球都是沙子，一粒沙子的大小是1立方毫米，那么地球约有1.098×10^30个沙子。
+
+使用 rho 破解 secp256k1 需要的计算次数约为 \\( 2^{128} \approx 3.4 \times 10^{38} \\),这个破解难度相当于假设你有1亿台机器并发去做数沙子的任务，需要把地球上的沙子数清楚。
+
 ## References
 
 * [Understanding-how-ECDSA-protects-your-data](https://www.instructables.com/Understanding-how-ECDSA-protects-your-data/)
