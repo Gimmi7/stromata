@@ -8,6 +8,7 @@
   - [Ed25519](./cryptography/ed25519.md)
   - [Schnorr](./cryptography/schnorr.md)
   - [Oblivious Transfer](./cryptography/oblivious_transfer.md)
+  - [PedersenProof](./cryptography/pedersen_proof.md)
 - [Mathmatics](./mathmatics/index.md)
   - [欧几里德算法](./mathmatics/eucliden_algorithm.md)
   - [贝祖定理](./mathmatics/bezout_identity.md)
