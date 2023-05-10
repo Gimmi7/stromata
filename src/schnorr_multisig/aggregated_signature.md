@@ -49,6 +49,12 @@ Signing is an interactive three-round protocol. singer i behaves as follows:
 * \\( \because \quad \overline{R}=R_1+R_2+\cdots+R_n \\)
 * lhs=rhs
 
+## Rotate share
+
+Assume we just have two party, then we can update the shares with equation  \
+ \\( x_1'=x_1-r \bmod{n} \\)  \
+  \\( x_2'=x_2+r \bmod{n} \\)
+
 ## References
 
 * [Compact Multi-Signatures for Smaller Blockchains](https://eprint.iacr.org/2018/483.pdf)

@@ -27,14 +27,21 @@ which will be an encryption of  \
 
 ![two-party-sign](./assets/two-party-sign.png)
 
+## Rotate share
+
+In the implemention of unbound_security, when refresh share, they actually refresh the paillier's **ek**(encode key pair), **dk**(decode key pair).
+
+Because Party_2 hold the encrypted x_1, if the paillier's dk is leaked, Party_2 can construct the private key.
+
+In the above eqution, it seems that we can refresh \\( x_1, x_2 \\) at the same time, because \\( x_1 \times r \times x_2 \times r^{-1} = x_1 \times x_2 \\).
+
 ## todo
 
 * carrying out private-key operations via a secure protoco that reveals nothing but the output.
 * revoke a party`s share.
 * Is it possible to construct a full-threshold protocol for multiparty ECDSA, with practicaldistributed key generation and signing?
-* It is possible fro P1 to singlehandedly cmpute r from \\( R=(r_x,r_y) \\)
+* It is possible for P1 to singlehandedly cmpute r from \\( R=(r_x,r_y) \\)
 * Generate generic secret,then use to derivate bip. Is this safe?
-* Oblivious Transfer
 
 ## References
 
