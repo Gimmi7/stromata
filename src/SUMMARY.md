@@ -18,6 +18,8 @@
   - [Zero encrypt proof](./zkpaillier/zero_enc_proof.md)
   - [Correct ciphertext proof](./zkpaillier/correct_ciphertext.md)
 - [Pratical MPC](./pratical_mpc.md)
+- [Schnorr Multisig](./schnorr_multisig/index.md)
+  - [Aggregated Signature](./schnorr_multisig/aggregated_signature.md)
 - [Particle Network](./particle_network.md)
 - [Lit Protocol](./lit_protocol.md)
 - [Travelling Guideline](./travel/travelling_guideline.md)
