@@ -33,13 +33,45 @@
  \\]
 意为将 \\( a_i \\)映射为 \\( a_{p_i} \\), 其中 \\( p_1,p_2,\cdots,p_n \\) 是 \\( 1,2,\cdots,n \\)的一个排列。显然 S 上的所有置换的数量为 n!。
 
+所以置换的本质就是一个双射函数。
+
 ## 对称群 (symmetric group) 和 置换群 (permutation group)
 
-给定一个集合 M, 集合M的所有置换构成集合 N, N 关于置换的乘法(更准确的表述为“映射的合成”)满足封闭性，结合律，有单位元 (恒等置换，即每个元素映射到它自己)，有逆元 (交换置换表示中的上下两行)，因此构成一个群，称为 M 的对称群，记为\\( Sym(M) \\).
+给定一个集合 M, 集合M的所有**可逆置换**构成集合 N, N 关于可逆置换的复合（函数的复合也可以看作是两个函数间的二元运算）满足封闭性，结合律，有单位元 (恒等置换，即每个元素映射到它自己)，有逆元 (交换置换表示中的上下两行)，因此构成一个群，称为 M 的对称群，记为\\( Sym(M) \\).
 
 \\( Sym(M) \\)的任一子群称为 M 的置换群。
 
 如果 M 是包含 n 个元素的有限集， 称其到自身的可逆映射为 **n阶置换** (permutation)， 其对称群称为 **n阶对称群**(sysmmetric group of degree n).
+
+举个例子： 假设我们有集合 M={1,2,3}, 所有的置换就是对集合M做全排列，结果如下： \
+\\(
+  \begin{pmatrix}
+    1,2,3 \\\\
+    1,2,3
+  \end{pmatrix}
+  \begin{pmatrix}
+    1,2,3 \\\\
+    2,1,3
+  \end{pmatrix}
+  \begin{pmatrix}
+    1,2,3 \\\\
+    3,1,2
+  \end{pmatrix}
+  \begin{pmatrix}
+    1,2,3 \\\\
+    1,3,2
+  \end{pmatrix}
+  \begin{pmatrix}
+    1,2,3 \\\\
+    2,3,1
+  \end{pmatrix}
+  \begin{pmatrix}
+    1,2,3 \\\\
+    3,2,1
+  \end{pmatrix}
+\\)
+
+以上这六个置换就是就是对称群的元素集合，集合的运算就是对映射函数进行复合操作，单位元就是第一个元素（恒等置换），逆元就是把每一个置换表达中的上下两行交换得到的新的映射函数，而且每次进行复合操作得到的映射函数都是上面的置换之一，且复合函数满足结合律。
 
 ## References
 
@@ -51,4 +83,7 @@
 * [知乎:排列与对称群](https://zhuanlan.zhihu.com/p/402197369)
 * [wiki: 对称群](https://zh.wikipedia.org/wiki/%E5%AF%B9%E7%A7%B0%E7%BE%A4_(n%E6%AC%A1%E5%AF%B9%E7%A7%B0%E7%BE%A4))
 * [wiki:置换群](https://zh.wikipedia.org/wiki/%E7%BD%AE%E6%8D%A2%E7%BE%A4)
-* [oi-wiki: 群论]
+* [oi-wiki: 群论](https://oi-wiki.org/math/group-theory/)
+* [fandom-wiki: 对称群](https://math.fandom.com/zh/wiki/%E5%B0%8D%E7%A8%B1%E7%BE%A4?variant=zh-sg)
+* [bilibili: 复合函数结合律的证明](https://www.bilibili.com/video/BV1zZ4y1p793/)
+* [permutation-generator](https://www.dcode.fr/permutations-generator)
