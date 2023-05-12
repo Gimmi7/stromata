@@ -138,3 +138,5 @@ Sony PS3's ECDSA private key was leak by them same random k.This is also the rea
 * [Understanding-how-ECDSA-protects-your-data](https://www.instructables.com/Understanding-how-ECDSA-protects-your-data/)
 * [noble-secp256k1](https://github.com/paulmillr/noble-secp256k1)
 * [ecc-encryption-decryption](https://cryptobook.nakov.com/asymmetric-key-ciphers/ecc-encryption-decryption)
+* [signature recid](https://coders-errand.com/ecrecover-signature-verification-ethereum/)
+* [signature recid: geth implementation](https://github.com/ethereum/go-ethereum/blob/master/crypto/secp256k1/libsecp256k1/src/ecdsa_impl.h#L306)

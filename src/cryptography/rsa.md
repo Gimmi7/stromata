@@ -36,3 +36,15 @@ so \\( D_m=(m^{Q_a})^{d_A}=m^{Q_a*d_A}=m^1=m \\)   \
 ## RSA is not an ideal system for the future of cryptography
 
 The gap between the difficulty of factoring large numbers and multiplying large numbers is shrinking as the number (i.e. the key's bit length) gets larger. As the resources available to decrypt numbers increase, the size of the keys need to grow even faster. This is not a sustainable situation for mobile and low-powered devices that have limited computational power. The gap between factoring and multiplying is not sustainable in the long term.
+
+## RSA public key security
+
+RSA public key often denoted as \\( (N,e) \\), N is the max value, e is exponent(denoted as \\(Q_a\\) above).
+
+It is necessary to ensure that the public key defines a permutation over \\( Z_N \\): that is raising to the power of e modulo N must be bijective, or equivalently, every integer between \\([0, N-1]\\)  must hava an \\( e_{th} \\) root modulo N.
+
+\\[ i^e \equiv y_i \bmod{N}, \quad  i \in [0,N-1], \quad y_i \in [0, N-1] \\]
+
+## References
+
+* [Efficient Noninteractive Certification of RSA Moduli and Beyond](https://eprint.iacr.org/2018/057.pdf)

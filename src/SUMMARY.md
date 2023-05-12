@@ -14,6 +14,7 @@
   - [贝祖定理](./mathmatics/bezout_identity.md)
   - [拓展欧几里德算法](./mathmatics/extended_euclidean_algorithm.md)
   - [中国剩余定理](./mathmatics/crt.md)
+  - [群论](./mathmatics/group_theory.md)
 - [ZK-Paillier](./zkpaillier/index.md)
   - [Zero encrypt proof](./zkpaillier/zero_enc_proof.md)
   - [Correct ciphertext proof](./zkpaillier/correct_ciphertext.md)
