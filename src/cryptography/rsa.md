@@ -41,10 +41,11 @@ The gap between the difficulty of factoring large numbers and multiplying large 
 
 RSA public key often denoted as \\( (N,e) \\), N is the max value, e is exponent(denoted as \\(Q_a\\) above).
 
-It is necessary to ensure that the public key defines a permutation over \\( Z_N \\): that is raising to the power of e modulo N must be bijective, or equivalently, every integer between \\([0, N-1]\\)  must hava an \\( e_{th} \\) root modulo N.
+It is necessary to ensure that the public key operation (\\( msg^e \bmod{n} \\)) is a permutation over \\( Z_N \\): that is raising to the power of e modulo N must be bijective, or equivalently, every integer between \\([0, N-1]\\)  must hava an \\( e_{th} \\) root modulo N.
 
 \\[ i^e \equiv y_i \bmod{N}, \quad  i \in [0,N-1], \quad y_i \in [0, N-1] \\]
 
 ## References
 
 * [Efficient Noninteractive Certification of RSA Moduli and Beyond](https://eprint.iacr.org/2018/057.pdf)
+* [A Computational Introduction to Number Theory and Algebra](https://www.shoup.net/ntb/ntb-v2.pdf)

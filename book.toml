@@ -8,3 +8,6 @@ title = "Stromata Of Gimmi7"
 [output.html]
 mathjax-support = true
 mathjax = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+
+[preprocessor.katex]
+after = ["links"]
