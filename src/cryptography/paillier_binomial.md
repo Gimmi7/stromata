@@ -63,7 +63,7 @@
 
 欧拉函数表示为 \\( \phi(n) \\) 或者 \\( \varphi(n) \\), 欧拉函数计算小于n且和n互质的正整数的个数，其实也就是计算整数模n乘法群的阶。（群的阶order,指的是群中元素的个数）。
 
-卡迈克函数表示为 \\( \lambda(n) \\), 卡迈克函数计算所有和n互质的所有正整数 a 中, 使得 \\( a^m \equiv 1 \pmod n \\) 的最小的正整数 m。Carmichael funtion有一个准确描述的名字叫【最小通用指数函数】(least-universal-exponent-funtion);
+卡迈克函数表示为 \\( \lambda(n) \\), 卡迈克函数计算使得**所有**和n互质的所有正整数 a （需要满足所有的a）, 满足 \\( a^m \equiv 1 \pmod n \\) 的最小的正整数 m。Carmichael funtion有一个准确描述的名字叫【最小通用指数函数】(least-universal-exponent-funtion);
 在代数术语中，\\( \lambda(n) \\)是整数模n乘法群的指数。
 
 ## 同态加密/解密
