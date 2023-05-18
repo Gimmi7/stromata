@@ -18,13 +18,13 @@ To encrypt a number you multiply it by itself pub times, making sure to wrap aro
 
 To decrypt a message, you multiply it by itself priv times and you get back to the original number.
 
-## derivation process
+## Derivation process
 
-$ p,q $ : two  random  secret  primes. \
-$ n=p\times q $ : n is RSA max. \
-$\lambda(n)=lcm(p-1,q-1) $  \
-choose e: $ 2< e < \lambda(n), gcd(e,\lambda(n))=1 $  \
-determine d: $d \equiv e^{-1} \pmod{\lambda(n)} $   \
+* $ p,q $ : distinct equal-length primes. Thus p will not divide q-1 and q will not divide p-1, which ensures that $gcd(N, \phi(N))=1 $
+* $ n=p\times q $ : n is RSA max.
+* $\lambda(n)=lcm(p-1,q-1) $  
+* choose e: $ 2< e < \lambda(n), gcd(e,\lambda(n))=1 $  
+* determine d: $d \equiv e^{-1} \pmod{\lambda(n)} $
 
 encrypt: $ E_m= m^{e} \pmod{n} $    \
 
@@ -37,7 +37,15 @@ $ D_m=(m^{e})^{d} \equiv m^{ed} \equiv m^{ed \bmod ord_n(m)} \equiv m^{ed \bmod 
 
 The gap between the difficulty of factoring large numbers and multiplying large numbers is shrinking as the number (i.e. the key's bit length) gets larger. As the resources available to decrypt numbers increase, the size of the keys need to grow even faster. This is not a sustainable situation for mobile and low-powered devices that have limited computational power. The gap between factoring and multiplying is not sustainable in the long term.
 
-## RSA public key security
+## RSA security
+
+RSA security can be classify into 3 parts, each part is corresponding to **n,e,m,** (n,e) is the public key, m is the msg need to be encrypted.
+
+* RSA n security: $gcd(n,\phi(n))=1 $, this condition ensure that $ (p \nmid q-1) and (q \nmid p-1) $, this help maintain the difficulty of factoring the modulus $n=pq $.
+* RSA e security: $gcd(e, \phi(n))=1 $, ensure the map $x \mapsto x^e $ is a permutation over $Z_n^*$, if with the condition n is square-free, then the map $x \mapsto x^e $ is a permutation over $Z_n$.
+* RSA m security: $gcd(m, n)=1$, there is a negligible possibility will leak the factorization of n. When msg m is not coprime to n, the encrypted result $m^e \pmod{n} $ is not coprime to n, then the factorization will be leaked ($factor=gcd(m^e \pmod{n}, n) $). The possibility $P=1-\frac{\phi(n)}{n} $， if n is not generated with bias, the possibility is trivial.
+
+## RSA e security
 
 RSA public key often denoted as $ (N,e) $, N is the max value, e is exponent.
 
@@ -46,8 +54,6 @@ It is necessary to ensure that the public key operation $[(msg)^e \bmod{n}] $ is
 $$ i^e \equiv y_i \bmod{N}, \quad  i \in [0,N-1], \quad y_i \in [0, N-1] $$
 
 If the map funtion is not a permutation over $Z_N$, then some element in $Z_N$ after map will get the same value (not injective), this will cause information loss.
-
-There is a trivial possibility will leak the factorization of N. When msg m is not coprime to N, the encrypted result $m^e \pmod{N} $ is not coprime to N, then the factorization will be leaked. The possibility $P=1-\frac{\phi(N)}{N} $， if the N is not generated with bias, the possibility is trivial.
 
 ## $x \mapsto x^e \pmod{N} $  permutation
 
@@ -71,8 +77,19 @@ Furthermore, if N is also square free, $x \mapsto x^e \pmod{N} $ is a permuation
 A number N is **square free** if it can be written as $N = p_1p_2 \cdots p_r$ for distinct prime numbers
 $p_i$ (N is not square free if it is divisible by $p^2$, where p is some prime.)
 
+In [https://eprint.iacr.org/2018/057.pdf](https://eprint.iacr.org/2018/057.pdf) Theorem3.3, Lemma A.6, The author introduce a method that check N is not divisible by all the primes less than $\alpha $, The prof can provide statistical soundness with error $Probability= \frac{1}{\alpha^m} <= 2^{-\mathcal{k}} $
+
+## RSA n security
+
+$n=pq \\
+\phi(n)=\phi(p)\phi(q)=(p-1)(q-1) \\
+d \equiv e^{-1} \pmod{\phi(n)} \\
+$
+If $(p | q-1) or (q | p-1) $,  then $gcd(n, \phi(n))=d > 1$, it would imply that p and (q-1) share a common factor. In such a case ,the Euler's totient funtion value $\phi(n) $ would become more predictable, which could weaken the security of the RSA algorithm.
+
 ## References
 
 * [Efficient Noninteractive Certification of RSA Moduli and Beyond](https://eprint.iacr.org/2018/057.pdf)
 * [A Computational Introduction to Number Theory and Algebra](https://www.shoup.net/ntb/ntb-v2.pdf)
 * [wiki: RSA key generation](https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Key_generation)
+* [Certifying RSA Public Keys with an Efficient NIZK](https://open.bu.edu/ds2/stream/?#/documents/238765/page/4)

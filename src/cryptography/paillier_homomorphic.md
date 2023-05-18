@@ -65,7 +65,7 @@ The decisional composite residuosity assumption(DCRA) states that given a compos
   \\( \phi(n^2)=n\phi(n) \\)
 * The partial private key \\({\color{Red}\lambda}\\) is determined by Carmichael's funtion   \
   \\( \lambda(n)=lcm(p-1,q-1) \\), least common multiple(最小公倍数).
-* g is a generater of \\( Z^*_{n^2} \\)
+* the order of g is a nonzero multiple of n
 
 **Paillier Encryption:**
 

@@ -96,6 +96,23 @@ c: ciphertext
 \\( \therefore c^{\lambda}=g^{m\lambda} \bmod{n^2}= (1+kn)^m \bmod{n^2}=1+knm \bmod{n^2} \\)  \
 \\( Dec=\frac{knm}{kn} \bmod{n}= m \bmod{n}=m \\)
 
+## 证明加密函数双射
+
+映射函数 $\varepsilon_g: Z_n \times Z_n^*\mapsto Z_{n^2}^*, \varepsilon_g(x,y)= g^x \times y^n \pmod{n^2} $
+
+引理：若 g 的阶 $ord_{n^2}(g) $ 是n的非零整数倍，则加密函数 $\varepsilon_g $ 是双射。
+
+证明： 由于 $Z_n \times Z_n^*$ 的元素个数和 $Z_{n^2}^* $ 一样， 只需要证明单射。  \
+假设有 $c_1 = g^{m_1} r_1^n \pmod{n^2}, c_2=g^{m_2} r_2^n \pmod{n^2} $    \
+如果 $c_1 = c_2$, 两式相除有 \
+$g^{m_1-m_2} \cdot (r_1 r_2^{-1})^n \equiv 1 \pmod{n^2} $ ,两边同求取幂有 \
+$g^{\lambda(m_1-m_2)} \cdot (r_1 r_2^{-1})^{\lambda n} \equiv g^{\lambda(m_1-m_2)} \equiv 1 \pmod{n^2} $  \
+从而有 $ord_{n^2}(g) | \lambda(m_1-m_2) $ \
+又 $n|ord_{n^2}(g) \Rightarrow n|\lambda(m_1-m_2) $ \
+又因为 $gcd(\lambda, n)=1 $, 所以 $n | (m_1-m_2) $  \
+因此在 $m_1,m_2 \in Z_n $的 意义下， $m_1=m_2$ \
+得证
+
 ## References
 
 * [The Paillier Cryptomsysem](https://s68aa858fd10b80a7.jimcontent.com/download/version/0/module/4931760061/name/paillier.pdf)
@@ -108,3 +125,4 @@ c: ciphertext
 * [OI wiki:中国剩余定理CRT](https://oi-wiki.org/math/number-theory/crt/)
 * [wiki: 算术基本定理(质数分解定理)](https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic)
 * [使用质数分解定理求解大数的约数个数](https://www.cnblogs.com/wkfvawl/p/9911083.html)
+* [中文通过双射证明Paillier](https://www.cnblogs.com/coming1890/p/14561487.html)
