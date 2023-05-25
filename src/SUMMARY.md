@@ -9,6 +9,7 @@
   - [Schnorr](./cryptography/schnorr.md)
   - [Oblivious Transfer](./cryptography/oblivious_transfer.md)
   - [PedersenProof](./cryptography/pedersen_proof.md)
+  - [Range Proof](./cryptography/range_proof.md)
   - [PDL](./cryptography/pdl.md)
 - [Mathmatics](./mathmatics/index.md)
   - [欧几里德算法](./mathmatics/eucliden_algorithm.md)

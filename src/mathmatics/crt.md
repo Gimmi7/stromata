@@ -76,3 +76,4 @@ $$
 ## References
 
 * [oi wiki: crt](https://oi-wiki.org/math/number-theory/crt/)
+* [RSA-CRT 使用中国剩余定理CRT对RSA算法进行解密](https://blog.csdn.net/qq_43589852/article/details/127691919)

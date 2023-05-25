@@ -6,7 +6,7 @@ RSA (Rivest–Shamir–Adleman), is a public-key cryptography.
 
 In the case of RSA, the easy algorithm multiplies two prime numbers. If multiplication is the easy algorithm, its difficult pair algorithm is factoring the product of the multiplication into its two component primes.
 
-## RAS max
+## RSA max
 
 In RSA, this maximum value (call it max) is obtained by multiplying two random prime numbers. The public and private keys are two specially chosen numbers that are greater than zero and less than the maximum value, call them pub and priv.
 
