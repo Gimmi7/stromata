@@ -25,5 +25,7 @@
   - [Aggregated Signature](./schnorr_multisig/aggregated_signature.md)
 - [Particle Network](./particle_network.md)
 - [Lit Protocol](./lit_protocol.md)
+- [ZK](./zk/index.md)
+  - [Groth16: zkSNARKs](./zk/groth16.md)
 - [Travelling Guideline](./travel/travelling_guideline.md)
   - [武汉](./travel/wuhan.md)
