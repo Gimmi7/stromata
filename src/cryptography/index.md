@@ -32,3 +32,4 @@ A bijective function satisfies both of these properties.Bejective functions are 
 ## References
 
 * [A relative easy way to understand RSA & ECC](https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/)
+* [负数取模](https://www.jianshu.com/p/452c1a5acd31)
