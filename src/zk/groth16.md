@@ -284,3 +284,4 @@ $ \qquad \Downarrow $ \
 - [安比实验室翻译zk-SNARK](https://secbit.io/blog/2019/12/25/learn-zk-snark-from-zero-part-one/)
 - [Dapp-learning: ZK-SNARK md](https://github.com/Dapp-Learning-DAO/Dapp-Learning/blob/main/crypto/ZK-SNARK/README.md)
 - [DIZK: The Vanishing Polynomial for QAPs](https://coders-errand.com/the-vanishing-polynomial-for-qaps/)
+- [Justin Thaler: Proofs,Arguments,and Zero-Knowledge](https://people.cs.georgetown.edu/jthaler/ProofsArgsAndZK.pdf)

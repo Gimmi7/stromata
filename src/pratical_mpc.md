@@ -12,7 +12,7 @@ it is very difficult to compute \\( k_1',k_2' \\), such that  \
 ## Two-party protocol in <a href="#r4">[4]</a>
 
 [4]use multiplicative sharing of x and k. That is the parties hold \\(x_1,x_2\\) such that \\( x_1\cdot x_2=x \bmod q \\),and in each signing operation they generate \\(k_1,k_2\\) such that \\( k_1 \cdot k_2=k \bmod q \\). For example: \
-\\(P_1: c_1=Enc(k_1^{-1},H(m)), c2=Enc(k_1^{-1} \cdot x_1 \cdot r )\\) \
+\\(P_1: c_1=Enc(k_1^{-1} \cdot H(m)), c2=Enc(k_1^{-1} \cdot x_1 \cdot r )\\) \
 Then , using scalar multiplication(denoted \\(\odot\\)) and homomorphic addition(denoted \\(\oplus\\))  \
 \\( P_2: (k_2^{-1} \odot c_1)\oplus [(k_2^{-1} \cdot x_2)\odot c_2] \\) \
 which will be an encryption of  \

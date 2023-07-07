@@ -8,7 +8,7 @@
 
 ### 定理的陈述
 
-\\( (x+y)^n= \binom{n}{0}x^ny^0 + \binom{n}{1}x^{n-1}y^1 + \binom{n}{2}x^{n-2}y^2 +\cdots+ \binom{n}{n-1}x^1y{n-1} + \binom{n}{n}x^0y^n \\)
+\\( (x+y)^n= \binom{n}{0}x^ny^0 + \binom{n}{1}x^{n-1}y^1 + \binom{n}{2}x^{n-2}y^2 +\cdots+ \binom{n}{n-1}x^1y^{n-1} + \binom{n}{n}x^0y^n \\)
 
 其中 \\( \binom{n}{k} \\) 被称为二项式系数，其等于 \\( \frac{n!}{k!(n-k)!} \\)
 
