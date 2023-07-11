@@ -34,5 +34,7 @@
   - [Pairing](./zk/pairing.md)
   - [Groth16: zkSNARKs](./zk/groth16.md)
   - [GG20](./zk/gg20.md)
+- [Talks](./talks/index.md)
+  - [TSS](./talks/tss.md)
 - [Travelling Guideline](./travel/travelling_guideline.md)
   - [武汉](./travel/wuhan.md)
