@@ -42,5 +42,6 @@
   - [Annotation](./java/annotation.md)
   - [IO](./java/io.md)
   - [JVM](./java/jvm.md)
+  - [MySQL](./java/mysql.md)
 - [Travelling Guideline](./travel/travelling_guideline.md)
   - [武汉](./travel/wuhan.md)
