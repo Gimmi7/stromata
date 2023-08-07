@@ -44,6 +44,46 @@
 * Major-GC 又叫 Old-GC， 只进行老年代的垃圾收集
 * Full-GC，对全堆进行垃圾收集
 
+## Full GC的触发条件
+
+* 主动调用 System.gc()
+* 老年代空间不够
+  * 大对象直接进入老年代或者长期存活的对象进入老年代导致老年代空间不够
+  * 使用复制算法的 minor GC 需要老年代的内存空间做担保，如果担保失败回执行 Full GC
+
+## 查看java使用的GC
+
+```text
+java -XX:+PrintCommandLineFlags -version
+-XX:InitialHeapSize=268435456 -XX:MaxHeapSize=4294967296 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+openjdk version "1.8.0_362"
+OpenJDK Runtime Environment (Zulu 8.68.0.21-CA-macos-aarch64) (build 1.8.0_362-b09)
+OpenJDK 64-Bit Server VM (Zulu 8.68.0.21-CA-macos-aarch64) (build 25.362-b09, mixed mode)
+
+-XX:+UseParallelGC 表示 java8 使用的是 ParallelGC
+```
+
+```text
+java -XX:+PrintGCDetails -version
+openjdk version "1.8.0_362"
+OpenJDK Runtime Environment (Zulu 8.68.0.21-CA-macos-aarch64) (build 1.8.0_362-b09)
+OpenJDK 64-Bit Server VM (Zulu 8.68.0.21-CA-macos-aarch64) (build 25.362-b09, mixed mode)
+Heap
+ PSYoungGen      total 76288K, used 2621K [0x000000076ab00000, 0x0000000770000000, 0x00000007c0000000)
+  eden space 65536K, 4% used [0x000000076ab00000,0x000000076ad8f748,0x000000076eb00000)
+  from space 10752K, 0% used [0x000000076f580000,0x000000076f580000,0x0000000770000000)
+  to   space 10752K, 0% used [0x000000076eb00000,0x000000076eb00000,0x000000076f580000)
+ ParOldGen       total 175104K, used 0K [0x00000006c0000000, 0x00000006cab00000, 0x000000076ab00000)
+  object space 175104K, 0% used [0x00000006c0000000,0x00000006c0000000,0x00000006cab00000)
+ Metaspace       used 2277K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 244K, capacity 384K, committed 384K, reserved 1048576K
+```
+
+## JVM Ergonomics
+
+不需要设置堆内存，新生代内存等。JVM会根据机器配置和日志自动动态调整JVM等各种内存尺寸。针对一些特殊场景通过设置 MaxGCPauseMillis,GCTimeRatio 这种 goal 就好，更加地符合人体工学。
+
 ## References
 
-* [知乎：你知道JVM方法区是干什么用的吗？](你知道 JVM 的方法区是干什么用的吗)
+* [知乎：你知道JVM方法区是干什么用的吗](https://zhuanlan.zhihu.com/p/166190558)
+* [oracle: Java8 Ergonomics gctuning](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/ergonomics.html#ergonomics)
