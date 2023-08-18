@@ -43,5 +43,7 @@
   - [IO](./java/io.md)
   - [JVM](./java/jvm.md)
   - [MySQL](./java/mysql.md)
+  - [Distributed Lock](./java/distributedlock.md)
+  - [QA](./java/qa.md)
 - [Travelling Guideline](./travel/travelling_guideline.md)
   - [武汉](./travel/wuhan.md)

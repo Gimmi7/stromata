@@ -195,10 +195,25 @@ HashMap的结构：数组+链表+红黑树
 
 JDK 1.7 的 ConcurrentHashMap 由一个个的 segment 组成，每个segment的元素类似HashTable, segment 通过集成 ReentrantLock 来进行加锁，所以 JDK 1.7 的 ConcurrentHashMap 的并发度最高只能为 16（默认的segment数量）。
 
-JDK 1.8 的 ConcurrentHashMap 采用与 HashMap 相似的（数组+链表+红黑树）来实现，而加锁则是通过 CAS+synchronized实现。
+JDK 1.8 的 ConcurrentHashMap 采用与 HashMap 相似的（数组+链表+红黑树）来实现，而加锁则是通过 CAS+synchronized实现。具体的细节为，当数组在某个slot为null时，通过CAS进入插入；如果某个slot不为空，则使用synchronized锁住这个slot，然后进行链表遍历比对的操作，如果是红黑树，则进行红黑树的插入操作。
+
+## 线程中断
+
+中断一个线程要么通过调用 Thread.interrupt(), 要么在线程内抛出异常。
+
+调用Thread.interrupt()会有以下几种case:
+
+* 线程被 wait() join()等monitor锁阻塞，或者线程被 sleep()阻塞，中断标记会被擦除，线程接收到 InterruptedException
+* 线程被 InterruptibleChannel 阻塞，channel会被关闭，中断标记会被设置，线程会接收到 ClosedByInterruptException
+* 线程被 java.nio.channels.Selector 阻塞，中断标记会被设置，selection操作会立即返回线程，就像被 selector wakeup 调用一样
+* 如果不是以上三种情况，中断标记会被设置
+
+此外，Java 线程池 Executor 调用 shutdown(), 会停止接受新任务，已经提交的任务执行完成后就关闭线程池，这个方法不会阻塞等待已经提交的任务执行完成，如果需要阻塞，使用 awaitTermination().  \
+shutdownNow()则是停止接受新任务，给正在执行的线程调用 interrupt(), 返回未被执行的任务列表。
 
 ## References
 
 * [全面了解Java原子变量类](https://www.cnblogs.com/jingmoxukong/p/12109049.html)
 * [Java全栈知识体系](https://pdai.tech/md/java/thread/java-thread-x-thread-basic.html)
 * [详解HashMap数据结构](https://juejin.cn/post/6844904111817637901)
+* [深入浅出Java多线程](https://redspider.gitbook.io/concurrent/di-san-pian-jdk-gong-ju-pian/17)
