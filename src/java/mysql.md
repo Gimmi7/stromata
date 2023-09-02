@@ -114,3 +114,7 @@ Innodb在内存更新数据后先记录redo log为prepare状态，然后告诉�
 * [一条sql语句在MySQL是如何执行的,包括查询和更新](https://juejin.cn/post/6844903801694978061)
 * [从MySQL架构看一条SQL语句是如何执行的？: 只介绍了查询](https://blog.csdn.net/rongtaoup/article/details/125784323)
 * [联合索引在B+树上的存储结构及数据查找方式](https://juejin.cn/post/6844904073955639304)
+* [Mysql 分区表原理与企业级实战](https://juejin.cn/post/7164406180243046436)
+* [哈希一致性算法，解决分库分表扩缩容时数据迁移问题](https://www.xiaolincoding.com/os/8_network_system/hash.html)
+* [Sharding-JDBC实战(史上最全)](https://www.cnblogs.com/crazymakercircle/p/15955254.html#autoid-h2-32-1-7)
+* [得物: mysql 深度分页优化](https://juejin.cn/post/6985478936683610149)

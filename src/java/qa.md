@@ -9,7 +9,7 @@
 
   ```java
   MappedByteBuffer mappedByteBuffer = fileChannel.map
-  (FileChannel.MapMode.READ_WRITE, 0, filechannel.size();
+  (FileChannel.MapMode.READ_WRITE, 0, filechannel.size());
   ```
 
   - Kafka读的时候，把数据从磁盘加载到内核缓冲区后,通过sendfile直接将数据复制到socket缓冲区，然后直接复制到NIC缓冲区(network interface card)，发送到网络上。
@@ -51,9 +51,15 @@
   - 添加一个version字段，使用CAS来避免出现死锁。
   - 在代码层面，尽量让多个事务sql顺序一致，将大事务拆分为小事务等可以降低死锁的概率。
   
+- **docker build 的缓存机制**
+
+  通过 ``` docker image history ``` 我们可用发现docker镜像在每一条命令后都创建了一个新的镜像层。在构建过程中，docker会通过一条命令是否完全相同来判断是否使用 Layer caching,对于 ```ADD,COPY```命令,docker 需要额外检查复制前后文件的校验和是否相同来判断是否命中缓存，不过校验和的计算不使用文件的最后修改和最后访问时间。
+
 ## References
 
 - [Kafka为什么吞吐量大、速度快](https://zhuanlan.zhihu.com/p/120967989)
 - [Java 两种zero-copy零拷贝技术mmap和sendfile的介绍](https://juejin.cn/post/7016498891365302302)
 - [kafka知识点--offset管理和Consumer Rebalance](https://cloud.tencent.com/developer/article/1596725)
 - [Kafka 的消息存储结构：索引文件与数据文件](https://shuyi.tech/archives/kafka-message-storage)
+- [docker 镜像构建时的缓存机制](https://blog.csdn.net/wenyichuan/article/details/106994660)
+- [Java JVM 可观测的原理解释和落地方案对比](https://www.infoq.cn/article/3iwv28hezcgcypdfmwsd)

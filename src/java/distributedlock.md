@@ -66,3 +66,6 @@ watchdog部分的逻辑：如果我们不知道任务要执行多久，就可以
 
 * [redisson github](https://github.com/redisson/redisson)
 * [redis的 pub/sub 实现原理](https://juejin.cn/post/6896711655099465735)
+* [Redis高级特性之Pub/Sub与Stream](https://cloud.tencent.com/developer/article/1456457)
+* [redis三种模式原理介绍](https://blog.csdn.net/qq_38658567/article/details/106840141)
+* [阿里云：一文详解Redis中BigKey、HotKey的发现与处理](https://juejin.cn/post/7001030996384546847)

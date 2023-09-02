@@ -44,6 +44,8 @@
   - [JVM](./java/jvm.md)
   - [MySQL](./java/mysql.md)
   - [Distributed Lock](./java/distributedlock.md)
+  - [Sentinel](./java/sentinel.md)
+  - [ZooKeeper](./java/zookeeper.md)
   - [QA](./java/qa.md)
 - [Travelling Guideline](./travel/travelling_guideline.md)
   - [武汉](./travel/wuhan.md)
