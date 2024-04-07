@@ -47,5 +47,6 @@
   - [Sentinel](./java/sentinel.md)
   - [ZooKeeper](./java/zookeeper.md)
   - [QA](./java/qa.md)
+  - [Distributed Store](./java/distributed_store.md)
 - [Travelling Guideline](./travel/travelling_guideline.md)
   - [武汉](./travel/wuhan.md)
