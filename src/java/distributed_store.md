@@ -70,6 +70,14 @@ DAX is an in-memory cache service,DAX itself doesn't flush cache data to disk, b
 
 ### [DynamoDB Well-Architected Lens](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-wal.html)
 
+## AWS Global Accelerator
+
+- [FAQ](https://aws.amazon.com/global-accelerator/faqs/)
+- **ELB vs AWS Global Accelerator**
+ELB just provides load balance within one Region, AWS Global Accelerator provides traffic management across multiple Regions.
+- [Amazon S3 Multi-Region Access Points](https://aws.amazon.com/s3/features/multi-region-access-points/)
+- [S3 Transfer Acceleration](https://aws.amazon.com/s3/transfer-acceleration/)
+
 ## References
 
 - [TiDB的数据库存储原理](http://www.voidme.com/nosql/nl-tidb-storage-principle)
