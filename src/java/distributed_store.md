@@ -40,8 +40,6 @@ For any item in a table, DynamoDB writes a corresponding index entry only if the
 
 ### [Partitions and data distribution](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.Partitions.html)
 
-[Partitions today are only split, never merged.](https://aws.amazon.com/blogs/database/part-3-scaling-dynamodb-how-partitions-hot-keys-and-split-for-heat-impact-performance/)
-
 **Max partition size is 10GB:**
 [Be aware of item-collection size limits when creating local secondary indexes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-indexes-general.html#bp-indexes-general-expanding-collections)
 An item collection is all the items in a table and its local secondary indexes that have the same partition key.
@@ -60,6 +58,7 @@ If your table doesn't have local secondary indexes, DynamoDB will automatically 
 DynamoDB might split a partition if that partitions receives sustained read or write traffic. However, split for heat cannot split within an item collection if there’s an LSI present or if the split is determined to not be beneficial, such as when writing an ever-increasing sort key.
 
 **Will DynamoDB merge the splited partition when decreasing the provisioned capacity unit?**
+[Partitions today are only split, never merged.](https://aws.amazon.com/blogs/database/part-3-scaling-dynamodb-how-partitions-hot-keys-and-split-for-heat-impact-performance/)
 
 ### [DynamoDB Accelerator (DAX)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html)
 
@@ -70,6 +69,12 @@ DAX is an in-memory cache service,DAX itself doesn't flush cache data to disk, b
 
 ### [DynamoDB Well-Architected Lens](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-wal.html)
 
+### Accenture IP address lookup Case
+
+- [Scaling DynamoDB: How partitions, hot keys, and split for heat impact performance (Part 1: Loading)](https://aws.amazon.com/blogs/database/part-1-scaling-dynamodb-how-partitions-hot-keys-and-split-for-heat-impact-performance/)
+- [Scaling DynamoDB: How partitions, hot keys, and split for heat impact performance (Part 2: Querying)](https://aws.amazon.com/blogs/database/part-2-scaling-dynamodb-how-partitions-hot-keys-and-split-for-heat-impact-performance/)
+- [Scaling DynamoDB: How partitions, hot keys, and split for heat impact performance (Part 3: Summary and best practices)](https://aws.amazon.com/blogs/database/part-3-scaling-dynamodb-how-partitions-hot-keys-and-split-for-heat-impact-performance/)
+
 ## AWS Global Accelerator
 
 - [FAQ](https://aws.amazon.com/global-accelerator/faqs/)
@@ -77,6 +82,12 @@ DAX is an in-memory cache service,DAX itself doesn't flush cache data to disk, b
 ELB just provides load balance within one Region, AWS Global Accelerator provides traffic management across multiple Regions.
 - [Amazon S3 Multi-Region Access Points](https://aws.amazon.com/s3/features/multi-region-access-points/)
 - [S3 Transfer Acceleration](https://aws.amazon.com/s3/transfer-acceleration/)
+
+## AWS Neptune
+
+- [Deep dive on Amazon Neptune PDF](https://d1.awsstatic.com/events/reinvent/2019/Deep_dive_on_Amazon_Neptune_DAT361.pdf)
+- [Neptune Graph Data Model](https://docs.aws.amazon.com/neptune/latest/userguide/feature-overview-data-model.html)
+- [Amazon Neptune storage, reliability and availability](https://docs.aws.amazon.com/neptune/latest/userguide/feature-overview-storage.html)
 
 ## References
 
