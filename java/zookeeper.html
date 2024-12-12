@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ZooKeeper - Stromata Of Gimmi7</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../cryptography/index.html"><strong aria-hidden="true">1.</strong> Cryptography</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cryptography/rsa.html"><strong aria-hidden="true">1.1.</strong> RSA</a></li><li class="chapter-item expanded "><a href="../cryptography/ecc.html"><strong aria-hidden="true">1.2.</strong> ECC</a></li><li class="chapter-item expanded "><a href="../cryptography/paillier_homomorphic.html"><strong aria-hidden="true">1.3.</strong> Paillier Homomorphic</a></li><li class="chapter-item expanded "><a href="../cryptography/paillier_binomial.html"><strong aria-hidden="true">1.4.</strong> 二项式证明paillier同态</a></li><li class="chapter-item expanded "><a href="../cryptography/ed25519.html"><strong aria-hidden="true">1.5.</strong> Ed25519</a></li><li class="chapter-item expanded "><a href="../cryptography/schnorr.html"><strong aria-hidden="true">1.6.</strong> Schnorr</a></li><li class="chapter-item expanded "><a href="../cryptography/oblivious_transfer.html"><strong aria-hidden="true">1.7.</strong> Oblivious Transfer</a></li><li class="chapter-item expanded "><a href="../cryptography/pedersen_proof.html"><strong aria-hidden="true">1.8.</strong> PedersenProof</a></li><li class="chapter-item expanded "><a href="../cryptography/range_proof.html"><strong aria-hidden="true">1.9.</strong> Range Proof</a></li><li class="chapter-item expanded "><a href="../cryptography/pdl.html"><strong aria-hidden="true">1.10.</strong> PDL</a></li></ol></li><li class="chapter-item expanded "><a href="../mathmatics/index.html"><strong aria-hidden="true">2.</strong> Mathmatics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mathmatics/euclidean_algorithm.html"><strong aria-hidden="true">2.1.</strong> 欧几里德算法</a></li><li class="chapter-item expanded "><a href="../mathmatics/bezout_identity.html"><strong aria-hidden="true">2.2.</strong> 贝祖定理</a></li><li class="chapter-item expanded "><a href="../mathmatics/extended_euclidean_algorithm.html"><strong aria-hidden="true">2.3.</strong> 拓展欧几里德算法</a></li><li class="chapter-item expanded "><a href="../mathmatics/crt.html"><strong aria-hidden="true">2.4.</strong> 中国剩余定理</a></li><li class="chapter-item expanded "><a href="../mathmatics/group_theory.html"><strong aria-hidden="true">2.5.</strong> 群论</a></li><li class="chapter-item expanded "><a href="../mathmatics/affine_transfer.html"><strong aria-hidden="true">2.6.</strong> 仿射变换</a></li><li class="chapter-item expanded "><a href="../mathmatics/homogeneous_coordinates.html"><strong aria-hidden="true">2.7.</strong> 齐次坐标</a></li><li class="chapter-item expanded "><a href="../mathmatics/lagrange_interpolation.html"><strong aria-hidden="true">2.8.</strong> 拉格朗日插值法</a></li><li class="chapter-item expanded "><a href="../mathmatics/taylor_formula.html"><strong aria-hidden="true">2.9.</strong> 泰勒公式</a></li><li class="chapter-item expanded "><a href="../mathmatics/fft.html"><strong aria-hidden="true">2.10.</strong> 快速傅立叶变换</a></li></ol></li><li class="chapter-item expanded "><a href="../zkpaillier/index.html"><strong aria-hidden="true">3.</strong> ZK-Paillier</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../zkpaillier/zero_enc_proof.html"><strong aria-hidden="true">3.1.</strong> Zero encrypt proof</a></li><li class="chapter-item expanded "><a href="../zkpaillier/correct_ciphertext.html"><strong aria-hidden="true">3.2.</strong> Correct ciphertext proof</a></li></ol></li><li class="chapter-item expanded "><a href="../pratical_mpc.html"><strong aria-hidden="true">4.</strong> Pratical MPC</a></li><li class="chapter-item expanded "><a href="../schnorr_multisig/index.html"><strong aria-hidden="true">5.</strong> Schnorr Multisig</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schnorr_multisig/aggregated_signature.html"><strong aria-hidden="true">5.1.</strong> Aggregated Signature</a></li></ol></li><li class="chapter-item expanded "><a href="../particle_network.html"><strong aria-hidden="true">6.</strong> Particle Network</a></li><li class="chapter-item expanded "><a href="../lit_protocol.html"><strong aria-hidden="true">7.</strong> Lit Protocol</a></li><li class="chapter-item expanded "><a href="../zk/index.html"><strong aria-hidden="true">8.</strong> ZK</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../zk/pairing.html"><strong aria-hidden="true">8.1.</strong> Pairing</a></li><li class="chapter-item expanded "><a href="../zk/groth16.html"><strong aria-hidden="true">8.2.</strong> Groth16: zkSNARKs</a></li><li class="chapter-item expanded "><a href="../zk/gg20.html"><strong aria-hidden="true">8.3.</strong> GG20</a></li></ol></li><li class="chapter-item expanded "><a href="../talks/index.html"><strong aria-hidden="true">9.</strong> Talks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../talks/tss.html"><strong aria-hidden="true">9.1.</strong> TSS</a></li></ol></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">10.</strong> JAVA</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/parallel.html"><strong aria-hidden="true">10.1.</strong> 并行</a></li><li class="chapter-item expanded "><a href="../java/springboot.html"><strong aria-hidden="true">10.2.</strong> SpringBoot</a></li><li class="chapter-item expanded "><a href="../java/annotation.html"><strong aria-hidden="true">10.3.</strong> Annotation</a></li><li class="chapter-item expanded "><a href="../java/io.html"><strong aria-hidden="true">10.4.</strong> IO</a></li><li class="chapter-item expanded "><a href="../java/jvm.html"><strong aria-hidden="true">10.5.</strong> JVM</a></li><li class="chapter-item expanded "><a href="../java/mysql.html"><strong aria-hidden="true">10.6.</strong> MySQL</a></li><li class="chapter-item expanded "><a href="../java/distributedlock.html"><strong aria-hidden="true">10.7.</strong> Distributed Lock</a></li><li class="chapter-item expanded "><a href="../java/sentinel.html"><strong aria-hidden="true">10.8.</strong> Sentinel</a></li><li class="chapter-item expanded "><a href="../java/zookeeper.html" class="active"><strong aria-hidden="true">10.9.</strong> ZooKeeper</a></li><li class="chapter-item expanded "><a href="../java/qa.html"><strong aria-hidden="true">10.10.</strong> QA</a></li><li class="chapter-item expanded "><a href="../java/distributed_store.html"><strong aria-hidden="true">10.11.</strong> Distributed Store</a></li></ol></li><li class="chapter-item expanded "><a href="../travel/travelling_guideline.html"><strong aria-hidden="true">11.</strong> Travelling Guideline</a></li><li class="chapter-item expanded "><a href="../raft/raft.html"><strong aria-hidden="true">12.</strong> Raft</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../travel/wuhan.html"><strong aria-hidden="true">12.1.</strong> 武汉</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Stromata Of Gimmi7</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="zookeeper"><a class="header" href="#zookeeper">ZooKeeper</a></h1>
+<h2 id="zookeeper-watch的过程会重试吗有ack吗"><a class="header" href="#zookeeper-watch的过程会重试吗有ack吗">ZooKeeper watch的过程(会重试吗，有ack吗)</a></h2>
+<p>zookeeper的watch通知不是可靠的，没有进行ack.</p>
+<pre><code class="language-java">public class NIOServerCnxn extends ServerCnxn {
+    @Override
+    public void process(WatchedEvent event) {
+        ReplyHeader h = new ReplyHeader(ClientCnxn.NOTIFICATION_XID, event.getZxid(), 0);
+        if (LOG.isTraceEnabled()) {
+            ZooTrace.logTraceMessage(
+                    LOG,
+                    ZooTrace.EVENT_DELIVERY_TRACE_MASK,
+                    "Deliver event " + event + " to 0x" + Long.toHexString(this.sessionId) + " through " + this);
+        }
+
+        // Convert WatchedEvent to a type that can be sent over the wire
+        WatcherEvent e = event.getWrapper();
+
+        // The last parameter OpCode here is used to select the response cache.
+        // Passing OpCode.error (with a value of -1) means we don't care, as we don't need
+        // response cache on delivering watcher events.
+        int responseSize = sendResponse(h, e, "notification", null, null, ZooDefs.OpCode.error);
+        ServerMetrics.getMetrics().WATCH_BYTES.add(responseSize);
+    }
+
+    @Override
+    public int sendResponse(ReplyHeader h, Record r, String tag, String cacheKey, Stat stat, int opCode) {
+        int responseSize = 0;
+        try {
+            ByteBuffer[] bb = serialize(h, r, tag, cacheKey, stat, opCode);
+            responseSize = bb[0].getInt();
+            bb[0].rewind();
+            sendBuffer(bb);
+            decrOutstandingAndCheckThrottle(h);
+        } catch (Exception e) {
+            LOG.warn("Unexpected exception. Destruction averted.", e);
+        }
+        return responseSize;
+    }
+}
+</code></pre>
+<h2 id="zookeeper-怎么保证有序执行"><a class="header" href="#zookeeper-怎么保证有序执行">ZooKeeper 怎么保证有序执行</a></h2>
+<p>zookeeper采用了全局递增的事务id来标识所有的proposal, zxid 为事务id,是一个64位的数字。高32位为epoch, 用来标识 leader
+周期，如果有新的 leader 选举出来，epoch 会自增。低32位用来递增proposal。依赖两阶段提交过程，首先向其他server发出事务执行请求，
+如果超过半数机器都执行成功，那么事务才会被提交。</p>
+<h2 id="为什么zookeeper-重连时要使用老的-session_id而不是完全重新建立连接"><a class="header" href="#为什么zookeeper-重连时要使用老的-session_id而不是完全重新建立连接">为什么ZooKeeper 重连时要使用老的 session_id，而不是完全重新建立连接</a></h2>
+<p>zookeeper的 session 分为 local session 和 global session。<br />
+global session 的连接信息保存在所有的 server 节点，所以创建 global session 开销比较大，需要经过共识算法。
+在有效期内进行重新连接不需要经过共识算法，开销低还能恢复到断开连接前的工作状态。
+只有 global session 支持创建临时节点。</p>
+<h2 id="persistent-recursive-watch-不会触发-nodechildrenchanged-事件"><a class="header" href="#persistent-recursive-watch-不会触发-nodechildrenchanged-事件">persistent recursive watch 不会触发 NodeChildrenChanged 事件</a></h2>
+<p>持久递归监视器会触发 NodeCreated, NodeDeleted, NodeDataChanged 三个事件，同时如果需要递归的话，则是对子节点也触发这三个事件，所以
+NodeChildrenChanged 就显得多余了。</p>
+<p>zookeeper的监听器设计成一次性的是位性能考虑，如果server端的每次数据更新都需要同步客户端，在并发度高的情况下，性能下降会很明显。
+持久递归监听器其实也是一次性的，跟普通的 watcher 一样，当递归监听器的某个子节点事件被触发之后，在对其调用 getData()
+之前，不会再次触发事件。</p>
+<h2 id="zookeeper怎么保证客户端先接收到-watch-事件然后才能看到数据"><a class="header" href="#zookeeper怎么保证客户端先接收到-watch-事件然后才能看到数据">ZooKeeper怎么保证客户端先接收到 watch 事件，然后才能看到数据</a></h2>
+<p>a client will never see a change for which it has set a watch until it first sees the watch event.
+ZooKeeper确保了事件和异步应答的有序分发，具体实现细节是通过synchronized加锁把所有的出站数据进行入队列操作。</p>
+<pre><code class="language-java">public class NIOServerCnxn extends ServerCnxn {
+
+    private final Queue&lt;ByteBuffer&gt; outgoingBuffers = new LinkedBlockingQueue&lt;&gt;();
+
+    /**
+     * sendBuffer pushes a byte buffer onto the outgoing buffer queue for
+     * asynchronous writes.
+     */
+    public void sendBuffer(ByteBuffer... buffers) {
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("Add a buffer to outgoingBuffers, sk {} is valid: {}", sk, sk.isValid());
+        }
+
+        synchronized (outgoingBuffers) {
+            for (ByteBuffer buffer : buffers) {
+                outgoingBuffers.add(buffer);
+            }
+            outgoingBuffers.add(packetSentinel);
+        }
+        requestInterestOpsUpdate();
+    }
+}
+</code></pre>
+<h2 id="zookeeper的watch维护在local-server"><a class="header" href="#zookeeper的watch维护在local-server">ZooKeeper的watch维护在local server</a></h2>
+<p>Watches are maintained locally at the ZooKeeper server to which the client is connected.</p>
+<h2 id="zookeeper-ssl-为什么需要客户端提供keystore"><a class="header" href="#zookeeper-ssl-为什么需要客户端提供keystore">ZooKeeper SSL 为什么需要客户端提供keystore</a></h2>
+<h2 id="zookeeper的客户端在重连时处理了-羊群效应-问题"><a class="header" href="#zookeeper的客户端在重连时处理了-羊群效应-问题">ZooKeeper的客户端在重连时处理了 "羊群效应" 问题</a></h2>
+<p>Only create a new session when you are notified of session expiration (mandatory).
+只有在session过期时才创建新的session，其他情况下都使用老的session_id进行连接，这样就不用经过共识算法投票。</p>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1680299">使用Docker搭建ZooKeeper集群</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/552203964">[Linux内存机制]Swap机制以及如何手动释放swap和内存</a></li>
+<li><a href="https://curator.apache.org/docs/recipes">curator recipes</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/46329541">知乎: Zookeeper 通知更新可靠吗？ 解读源码找答案</a></li>
+<li><a href="https://blog.51cto.com/u_15162069/2901274">zookeeper永久递归监听器其实也是一次性的</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../java/sentinel.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../java/qa.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../java/sentinel.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../java/qa.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

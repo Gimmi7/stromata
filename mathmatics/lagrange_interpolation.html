@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>拉格朗日插值法 - Stromata Of Gimmi7</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../cryptography/index.html"><strong aria-hidden="true">1.</strong> Cryptography</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cryptography/rsa.html"><strong aria-hidden="true">1.1.</strong> RSA</a></li><li class="chapter-item expanded "><a href="../cryptography/ecc.html"><strong aria-hidden="true">1.2.</strong> ECC</a></li><li class="chapter-item expanded "><a href="../cryptography/paillier_homomorphic.html"><strong aria-hidden="true">1.3.</strong> Paillier Homomorphic</a></li><li class="chapter-item expanded "><a href="../cryptography/paillier_binomial.html"><strong aria-hidden="true">1.4.</strong> 二项式证明paillier同态</a></li><li class="chapter-item expanded "><a href="../cryptography/ed25519.html"><strong aria-hidden="true">1.5.</strong> Ed25519</a></li><li class="chapter-item expanded "><a href="../cryptography/schnorr.html"><strong aria-hidden="true">1.6.</strong> Schnorr</a></li><li class="chapter-item expanded "><a href="../cryptography/oblivious_transfer.html"><strong aria-hidden="true">1.7.</strong> Oblivious Transfer</a></li><li class="chapter-item expanded "><a href="../cryptography/pedersen_proof.html"><strong aria-hidden="true">1.8.</strong> PedersenProof</a></li><li class="chapter-item expanded "><a href="../cryptography/range_proof.html"><strong aria-hidden="true">1.9.</strong> Range Proof</a></li><li class="chapter-item expanded "><a href="../cryptography/pdl.html"><strong aria-hidden="true">1.10.</strong> PDL</a></li></ol></li><li class="chapter-item expanded "><a href="../mathmatics/index.html"><strong aria-hidden="true">2.</strong> Mathmatics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mathmatics/euclidean_algorithm.html"><strong aria-hidden="true">2.1.</strong> 欧几里德算法</a></li><li class="chapter-item expanded "><a href="../mathmatics/bezout_identity.html"><strong aria-hidden="true">2.2.</strong> 贝祖定理</a></li><li class="chapter-item expanded "><a href="../mathmatics/extended_euclidean_algorithm.html"><strong aria-hidden="true">2.3.</strong> 拓展欧几里德算法</a></li><li class="chapter-item expanded "><a href="../mathmatics/crt.html"><strong aria-hidden="true">2.4.</strong> 中国剩余定理</a></li><li class="chapter-item expanded "><a href="../mathmatics/group_theory.html"><strong aria-hidden="true">2.5.</strong> 群论</a></li><li class="chapter-item expanded "><a href="../mathmatics/affine_transfer.html"><strong aria-hidden="true">2.6.</strong> 仿射变换</a></li><li class="chapter-item expanded "><a href="../mathmatics/homogeneous_coordinates.html"><strong aria-hidden="true">2.7.</strong> 齐次坐标</a></li><li class="chapter-item expanded "><a href="../mathmatics/lagrange_interpolation.html" class="active"><strong aria-hidden="true">2.8.</strong> 拉格朗日插值法</a></li><li class="chapter-item expanded "><a href="../mathmatics/taylor_formula.html"><strong aria-hidden="true">2.9.</strong> 泰勒公式</a></li><li class="chapter-item expanded "><a href="../mathmatics/fft.html"><strong aria-hidden="true">2.10.</strong> 快速傅立叶变换</a></li></ol></li><li class="chapter-item expanded "><a href="../zkpaillier/index.html"><strong aria-hidden="true">3.</strong> ZK-Paillier</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../zkpaillier/zero_enc_proof.html"><strong aria-hidden="true">3.1.</strong> Zero encrypt proof</a></li><li class="chapter-item expanded "><a href="../zkpaillier/correct_ciphertext.html"><strong aria-hidden="true">3.2.</strong> Correct ciphertext proof</a></li></ol></li><li class="chapter-item expanded "><a href="../pratical_mpc.html"><strong aria-hidden="true">4.</strong> Pratical MPC</a></li><li class="chapter-item expanded "><a href="../schnorr_multisig/index.html"><strong aria-hidden="true">5.</strong> Schnorr Multisig</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schnorr_multisig/aggregated_signature.html"><strong aria-hidden="true">5.1.</strong> Aggregated Signature</a></li></ol></li><li class="chapter-item expanded "><a href="../particle_network.html"><strong aria-hidden="true">6.</strong> Particle Network</a></li><li class="chapter-item expanded "><a href="../lit_protocol.html"><strong aria-hidden="true">7.</strong> Lit Protocol</a></li><li class="chapter-item expanded "><a href="../zk/index.html"><strong aria-hidden="true">8.</strong> ZK</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../zk/pairing.html"><strong aria-hidden="true">8.1.</strong> Pairing</a></li><li class="chapter-item expanded "><a href="../zk/groth16.html"><strong aria-hidden="true">8.2.</strong> Groth16: zkSNARKs</a></li><li class="chapter-item expanded "><a href="../zk/gg20.html"><strong aria-hidden="true">8.3.</strong> GG20</a></li></ol></li><li class="chapter-item expanded "><a href="../talks/index.html"><strong aria-hidden="true">9.</strong> Talks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../talks/tss.html"><strong aria-hidden="true">9.1.</strong> TSS</a></li></ol></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">10.</strong> JAVA</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/parallel.html"><strong aria-hidden="true">10.1.</strong> 并行</a></li><li class="chapter-item expanded "><a href="../java/springboot.html"><strong aria-hidden="true">10.2.</strong> SpringBoot</a></li><li class="chapter-item expanded "><a href="../java/annotation.html"><strong aria-hidden="true">10.3.</strong> Annotation</a></li><li class="chapter-item expanded "><a href="../java/io.html"><strong aria-hidden="true">10.4.</strong> IO</a></li><li class="chapter-item expanded "><a href="../java/jvm.html"><strong aria-hidden="true">10.5.</strong> JVM</a></li><li class="chapter-item expanded "><a href="../java/mysql.html"><strong aria-hidden="true">10.6.</strong> MySQL</a></li><li class="chapter-item expanded "><a href="../java/distributedlock.html"><strong aria-hidden="true">10.7.</strong> Distributed Lock</a></li><li class="chapter-item expanded "><a href="../java/sentinel.html"><strong aria-hidden="true">10.8.</strong> Sentinel</a></li><li class="chapter-item expanded "><a href="../java/zookeeper.html"><strong aria-hidden="true">10.9.</strong> ZooKeeper</a></li><li class="chapter-item expanded "><a href="../java/qa.html"><strong aria-hidden="true">10.10.</strong> QA</a></li><li class="chapter-item expanded "><a href="../java/distributed_store.html"><strong aria-hidden="true">10.11.</strong> Distributed Store</a></li></ol></li><li class="chapter-item expanded "><a href="../travel/travelling_guideline.html"><strong aria-hidden="true">11.</strong> Travelling Guideline</a></li><li class="chapter-item expanded "><a href="../raft/raft.html"><strong aria-hidden="true">12.</strong> Raft</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../travel/wuhan.html"><strong aria-hidden="true">12.1.</strong> 武汉</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Stromata Of Gimmi7</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="拉格朗日插值法lagrange-interpolation"><a class="header" href="#拉格朗日插值法lagrange-interpolation">拉格朗日插值法(Lagrange interpolation)</a></h1>
+<h2 id="起源"><a class="header" href="#起源">起源</a></h2>
+<p>现实生活中许多实际问题都用函数来表示各种变量之间的内在联系或规律。比如通过观察一个APP在一天中不同时间段的在线用户数量，可以反映出来该APP的用户更喜欢在什么时间段使用APP。如果我们通过反复观测统计得到了不同时间段在线用户数量，拉格朗日插值法就可以根据这些观测值，找到一个多项式，其恰好在各个观测点取到对应的观测值。这个多项式就叫做拉格朗日多项式(Lagrange polynomial)。</p>
+<p>对于给定的 $n+1$个点$(x_0,y_0),(x_1,y_1),\dots,(x_n,y_n)$，可以找到一个次数不超过$n$的拉格朗日多项式$L$，并且只有一个。 如果计入次数更高的多项式，则有无数个,因为所有与$L$相差 $\lambda (x-x_0)(x-x_1)\dots (x-x_n)$的多项式都满足条件。</p>
+<h2 id="定义"><a class="header" href="#定义">定义</a></h2>
+<p>给定$k+1$个取值点： $(x_0,y_0),\dots,(x_k,y_k)$, 其中的 $x_j$为自变量的位置，$y_j$为函数在这个位置的取值。假设任意两个$x_j$都互不相同（一个x不能对应两个y）,那么拉格朗日插值多项式为:</p>
+<p>$L(x)= \sum_{j=0}^k{y_j\ell_j(x)}$</p>
+<p>其中的每个 $\ell_j(x)$为<strong>拉格朗日基本多项式</strong>（或称<strong>插值基函数</strong>）:</p>
+<p>$\ell_j(x)=\prod_{i=0,i\neq j}^k \frac{x-x_i}{x_j-x_i}=\frac{(x-x_0)}{(x_j-x_0)}\dots \frac{(x-x_{j-1})}{(x_j-x_{j-1})} \frac{(x-x_{j+1})}{(x_j-x_{j+1})} \dots \frac{(x-x_k)}{(x_j-x_k)}$</p>
+<p>拉格朗日基本多项式的$\ell_j(x)$的特点是在$x_j$上的取值为<strong>1</strong>,在其他的点$x_i,i\neq j$上取值为<strong>0</strong>。</p>
+<h2 id="思路"><a class="header" href="#思路">思路</a></h2>
+<p>对于给定的$k+1$个点：$(x_0,y_0),\dots,(x_k,y_k)$，拉格朗日插值法的思路是找到一个在点$x_j$处取值为<strong>1</strong>，而在其他点处取值都为<strong>0</strong>的多项式$\ell_j(x)$,这样多项式$y_j\ell_j(x)$在点$x_j$处点取值为$y_j$,而在其他点处点取值都为<strong>0</strong>，于是:</p>
+<p>$L(x_j)=\sum_{i=0}^k{y_j\ell_i{(x_j)}}=0+0+\dots+y_j+\dots+0=y_j$</p>
+<p>在其他点处取值为<strong>0</strong>点多项式容易找到，比如：</p>
+<p>$other_0=(x-x_0)\dots (x-x_{j-1})(x-x_{j+1})\dots (x-x_k)$</p>
+<p>上面的多项式在$x_j$的取值为：$other_0j=(x_j-x_0)\dots (x_j-x_{j-1})(x_j-x_{j+1})\dots (x_j-x_k)$</p>
+<p>由于已经假设任何两个$x_i$不相同，因此<strong>other_0j</strong>取值不等于<strong>0</strong>，于是将<strong>other_0</strong>除以<strong>other_0j</strong>，就能得到一个“在$x_j$处取值为<strong>1</strong>，在其他点取值都为<strong>0</strong>的多项式”:</p>
+<p>$\ell_j(x)=\prod_{i=0,i\neq j}^k \frac{x-x_i}{x_j-x_i}=\frac{(x-x_0)}{(x_j-x_0)}\dots \frac{(x-x_{j-1})}{(x_j-x_{j-1})} \frac{(x-x_{j+1})}{(x_j-x_{j+1})} \dots \frac{(x-x_k)}{(x_j-x_k)}$</p>
+<p>这就是拉格朗日基本多项式。通过拉格朗日基本多项式我们可以推导出，最终通过插值生成的拉格朗日多项式的次数不大于k(对于给定k+1个点的情况)。</p>
+<h2 id="唯一性的证明"><a class="header" href="#唯一性的证明">唯一性的证明</a></h2>
+<p>次数不超过k的拉格朗日多项式至多只有一个。<br />
+假设有两个次数不超过k的拉格朗日多项式：$L_1, L_2$。<br />
+$diff=L_1-L_2$ <br />
+由于对于任意的点$x\in[x_0,\dots,x_k]$, $L_1(x)=L_2(x)$ <br />
+所以对于任意的点$x\in[x_0,\dots,x_k], diff=0$ <br />
+因为 diff 在所有 k+1 个点上的取值都为0， <br />
+因此$diff=\lambda(x-x_0)(x-x_1)\dots(x-x_k)$ <br />
+如果要使得 $diff\neq 0$, 那么diff的次数就一定不小于 k+1 <br />
+又由于拉格朗日多项式的次数不超过k,所以diff的次数不超过k <br />
+所以推导出在次数不超过k情况下，diff必然等于0，也就是说 $L_1=L_2$</p>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ul>
+<li><a href="https://zh.m.wikipedia.org/zh-hans/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%8F%92%E5%80%BC%E6%B3%95">wiki: Lagrange interpolation</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../mathmatics/homogeneous_coordinates.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../mathmatics/taylor_formula.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../mathmatics/homogeneous_coordinates.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../mathmatics/taylor_formula.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

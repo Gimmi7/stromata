@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>TSS - Stromata Of Gimmi7</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../cryptography/index.html"><strong aria-hidden="true">1.</strong> Cryptography</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cryptography/rsa.html"><strong aria-hidden="true">1.1.</strong> RSA</a></li><li class="chapter-item expanded "><a href="../cryptography/ecc.html"><strong aria-hidden="true">1.2.</strong> ECC</a></li><li class="chapter-item expanded "><a href="../cryptography/paillier_homomorphic.html"><strong aria-hidden="true">1.3.</strong> Paillier Homomorphic</a></li><li class="chapter-item expanded "><a href="../cryptography/paillier_binomial.html"><strong aria-hidden="true">1.4.</strong> 二项式证明paillier同态</a></li><li class="chapter-item expanded "><a href="../cryptography/ed25519.html"><strong aria-hidden="true">1.5.</strong> Ed25519</a></li><li class="chapter-item expanded "><a href="../cryptography/schnorr.html"><strong aria-hidden="true">1.6.</strong> Schnorr</a></li><li class="chapter-item expanded "><a href="../cryptography/oblivious_transfer.html"><strong aria-hidden="true">1.7.</strong> Oblivious Transfer</a></li><li class="chapter-item expanded "><a href="../cryptography/pedersen_proof.html"><strong aria-hidden="true">1.8.</strong> PedersenProof</a></li><li class="chapter-item expanded "><a href="../cryptography/range_proof.html"><strong aria-hidden="true">1.9.</strong> Range Proof</a></li><li class="chapter-item expanded "><a href="../cryptography/pdl.html"><strong aria-hidden="true">1.10.</strong> PDL</a></li></ol></li><li class="chapter-item expanded "><a href="../mathmatics/index.html"><strong aria-hidden="true">2.</strong> Mathmatics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mathmatics/euclidean_algorithm.html"><strong aria-hidden="true">2.1.</strong> 欧几里德算法</a></li><li class="chapter-item expanded "><a href="../mathmatics/bezout_identity.html"><strong aria-hidden="true">2.2.</strong> 贝祖定理</a></li><li class="chapter-item expanded "><a href="../mathmatics/extended_euclidean_algorithm.html"><strong aria-hidden="true">2.3.</strong> 拓展欧几里德算法</a></li><li class="chapter-item expanded "><a href="../mathmatics/crt.html"><strong aria-hidden="true">2.4.</strong> 中国剩余定理</a></li><li class="chapter-item expanded "><a href="../mathmatics/group_theory.html"><strong aria-hidden="true">2.5.</strong> 群论</a></li><li class="chapter-item expanded "><a href="../mathmatics/affine_transfer.html"><strong aria-hidden="true">2.6.</strong> 仿射变换</a></li><li class="chapter-item expanded "><a href="../mathmatics/homogeneous_coordinates.html"><strong aria-hidden="true">2.7.</strong> 齐次坐标</a></li><li class="chapter-item expanded "><a href="../mathmatics/lagrange_interpolation.html"><strong aria-hidden="true">2.8.</strong> 拉格朗日插值法</a></li><li class="chapter-item expanded "><a href="../mathmatics/taylor_formula.html"><strong aria-hidden="true">2.9.</strong> 泰勒公式</a></li><li class="chapter-item expanded "><a href="../mathmatics/fft.html"><strong aria-hidden="true">2.10.</strong> 快速傅立叶变换</a></li></ol></li><li class="chapter-item expanded "><a href="../zkpaillier/index.html"><strong aria-hidden="true">3.</strong> ZK-Paillier</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../zkpaillier/zero_enc_proof.html"><strong aria-hidden="true">3.1.</strong> Zero encrypt proof</a></li><li class="chapter-item expanded "><a href="../zkpaillier/correct_ciphertext.html"><strong aria-hidden="true">3.2.</strong> Correct ciphertext proof</a></li></ol></li><li class="chapter-item expanded "><a href="../pratical_mpc.html"><strong aria-hidden="true">4.</strong> Pratical MPC</a></li><li class="chapter-item expanded "><a href="../schnorr_multisig/index.html"><strong aria-hidden="true">5.</strong> Schnorr Multisig</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schnorr_multisig/aggregated_signature.html"><strong aria-hidden="true">5.1.</strong> Aggregated Signature</a></li></ol></li><li class="chapter-item expanded "><a href="../particle_network.html"><strong aria-hidden="true">6.</strong> Particle Network</a></li><li class="chapter-item expanded "><a href="../lit_protocol.html"><strong aria-hidden="true">7.</strong> Lit Protocol</a></li><li class="chapter-item expanded "><a href="../zk/index.html"><strong aria-hidden="true">8.</strong> ZK</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../zk/pairing.html"><strong aria-hidden="true">8.1.</strong> Pairing</a></li><li class="chapter-item expanded "><a href="../zk/groth16.html"><strong aria-hidden="true">8.2.</strong> Groth16: zkSNARKs</a></li><li class="chapter-item expanded "><a href="../zk/gg20.html"><strong aria-hidden="true">8.3.</strong> GG20</a></li></ol></li><li class="chapter-item expanded "><a href="../talks/index.html"><strong aria-hidden="true">9.</strong> Talks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../talks/tss.html" class="active"><strong aria-hidden="true">9.1.</strong> TSS</a></li></ol></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">10.</strong> JAVA</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/parallel.html"><strong aria-hidden="true">10.1.</strong> 并行</a></li><li class="chapter-item expanded "><a href="../java/springboot.html"><strong aria-hidden="true">10.2.</strong> SpringBoot</a></li><li class="chapter-item expanded "><a href="../java/annotation.html"><strong aria-hidden="true">10.3.</strong> Annotation</a></li><li class="chapter-item expanded "><a href="../java/io.html"><strong aria-hidden="true">10.4.</strong> IO</a></li><li class="chapter-item expanded "><a href="../java/jvm.html"><strong aria-hidden="true">10.5.</strong> JVM</a></li><li class="chapter-item expanded "><a href="../java/mysql.html"><strong aria-hidden="true">10.6.</strong> MySQL</a></li><li class="chapter-item expanded "><a href="../java/distributedlock.html"><strong aria-hidden="true">10.7.</strong> Distributed Lock</a></li><li class="chapter-item expanded "><a href="../java/sentinel.html"><strong aria-hidden="true">10.8.</strong> Sentinel</a></li><li class="chapter-item expanded "><a href="../java/zookeeper.html"><strong aria-hidden="true">10.9.</strong> ZooKeeper</a></li><li class="chapter-item expanded "><a href="../java/qa.html"><strong aria-hidden="true">10.10.</strong> QA</a></li><li class="chapter-item expanded "><a href="../java/distributed_store.html"><strong aria-hidden="true">10.11.</strong> Distributed Store</a></li></ol></li><li class="chapter-item expanded "><a href="../travel/travelling_guideline.html"><strong aria-hidden="true">11.</strong> Travelling Guideline</a></li><li class="chapter-item expanded "><a href="../raft/raft.html"><strong aria-hidden="true">12.</strong> Raft</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../travel/wuhan.html"><strong aria-hidden="true">12.1.</strong> 武汉</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Stromata Of Gimmi7</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="tss"><a class="header" href="#tss">TSS</a></h1>
+<p>Threshold Signatures</p>
+<h2 id="tss-vs-multisig-vs-sssshamirs-secret-sharing"><a class="header" href="#tss-vs-multisig-vs-sssshamirs-secret-sharing">TSS vs Multisig vs SSS(Shamir's Secret Sharing)</a></h2>
+<p><img src="../assets/tss_vs.png" alt="tss vs" /></p>
+<h3 id="tss-vs-multisig"><a class="header" href="#tss-vs-multisig">TSS vs Multisig</a></h3>
+<p>TSS与Multisig的主要区别在于TSS在链下计算签名，Multisig通过合约在链上完成多个签名的验证。和多签相比，TSS主要有以下优点：</p>
+<ul>
+<li>便捷性，Multisig每支持一个链，就需要部署一次合约，TSS只要椭圆曲线和签名算法不变，就不需要做额外的操作。比如所有EVM兼容的链，只需要实现一个ECDSA over Secp256k1的TSS库就可以全支持了。</li>
+<li>省gas, TSS花费的gas和EOA账户完全一致，Multisig根据实现不同，花费的gas也不同，但无论哪种实现，都比TSS花的gas多。</li>
+</ul>
+<h3 id="tss-vs-sss"><a class="header" href="#tss-vs-sss">TSS vs SSS</a></h3>
+<p>TSS与SSS的主要区别在于在整个生命周期中是否出现了<strong>私钥</strong>。SSS的方案中存在一个叫做dealer的角色，dealer在keygen和sign阶段都会拥有完整的私钥。如果dealer服务器出现故障，就会导致单点失败；如果dealer是一个恶意参与方，就会导致rug pull。TSS的方案中，要求在整个生命周期中都不能出现<strong>私钥</strong>，各个参与方都是平等的，安全性更高。</p>
+<h2 id="tss-生态介绍"><a class="header" href="#tss-生态介绍">TSS 生态介绍</a></h2>
+<p>当前业界的TSS方案可以分为两类，{2-2}和{t-n}。<br />
+目前{2-2}的实现方案主要依据<a href="https://eprint.iacr.org/2017/552.pdf">Lindell 17</a>这篇paper, {t-n}的实现方案则主要依据 <a href="https://eprint.iacr.org/2019/114.pdf">GG18</a>, <a href="https://eprint.iacr.org/2020/540.pdf">GG20</a>这两篇paper。</p>
+<ul>
+<li><strong>{2-2}:</strong> Zengo Wallet, Particle Network, Coinbase WaaS, Unipass</li>
+<li><strong>{t-n}:</strong> tss-lib(Binance: GG18), tss-lib(SwingBy protocol: GG20), Safeheron(GG18,GG20,CMP)</li>
+</ul>
+<p>可以看到，做C端钱包的大都选择了{2-2}模式，而{t-n}模式一般都用于B端解决方案中。主要是因为在C端钱包在实践过程中，无法为{t-n}方案找到<strong>可信第三方</strong>。就以{2-3}为例，除了服务提供方和用户自身外，还需要一个可信第三方，如果这个第三方由服务提供方来扮演，那服务提供方就可以完全掌握用户资产；如果用户自己同时使用两个设备来作为参与方，又会给普通用户带来糟糕的用户体验。所以，在C端钱包场景下，业界普通选择了{2-2}模式。其次，{2-2}的交互轮次比{t-n}更少，速度更快。</p>
+<p>另外，和传统的助记词钱包相比，C端钱包选择TSS,主要看中以下两个优点：</p>
+<ul>
+<li>安全，整个生命周期中都不会出现私钥，而且share可以更新</li>
+<li>丝滑，利用TSS可以屏蔽掉私钥，助记词等概念，帮助Web2用户轻松过渡到Web3</li>
+</ul>
+<h2 id="简单讲解-tss-的数学原理"><a class="header" href="#简单讲解-tss-的数学原理">简单讲解 TSS 的数学原理</a></h2>
+<h3 id="lindell-17-数学原理"><a class="header" href="#lindell-17-数学原理">Lindell-17 数学原理</a></h3>
+<p>在ECDSA里面，签名
+$$s= k^{-1}(h+xr)= k^{-1}h+ k^{-1}xr $$
+使用乘法来分享 x 和 k。 即 $x_1 \times x_2=x \pmod{q}$, 在每次签名的时候，双方分别生成$k_1,k_2$,令 $k_1 \times k_2=k \pmod{q} $, 则计算签名的过程如下：</p>
+<ul>
+<li>P1 and P2 generate $R=k_1\cdot k_2 \cdot G$ by Diffle-Hellman key exchange with zkp</li>
+<li>P1: $c_1=Enc(k_1^{-1}\cdot h), c_2=Enc(k_1^{-1}\cdot x_1 \cdot r) $</li>
+<li>P2: $Enc(s)= (k_2^{-1} \odot c_1)\oplus [(k_2^{-1} \cdot x_2) \odot c_2] $</li>
+<li>P1: $Dec(Enc(s))= k_2^{-1}(k_1^{-1} \cdot h) + k_2^{-1}\cdot x_2 \cdot (k_1^{-1} \cdot x_1 \cdot r)= k^{-1} \cdot (h+xr) $</li>
+</ul>
+<p>Lindell-17在上面的流程中做了一个优化，上面的流程可以总结为P1计算了部分签名，加密后发送给P2,P2利用同态加密在P1的部分签名的基础上进行计算，得到完整的加密版本的签名，然后把加密版本的签名发送给P1,P1通过解密得到签名的明文。Lindell-17的优化思路是，如果把P1的share加密后分享给P2,让P2独立完成签名的计算，然后把加密版本的签名发送给P1,P1通过解密得到签名的明文，这样就可以减少一次通信。过程如下：</p>
+<ul>
+<li>P1 and P2 generate $R=k_1\cdot k_2 \cdot G$ by Diffle-Hellman key exchange with zkp</li>
+<li>P2: $Enc(s')= k_2^{-1}\cdot h + k_2^{-1} \cdot r \cdot x_1 \cdot x_2 $</li>
+<li>P1: $Dec(Enc(s'))= s', s=s' \cdot k_1^{-1} $</li>
+</ul>
+<h3 id="gg20数学原理"><a class="header" href="#gg20数学原理">GG20数学原理</a></h3>
+<p><a href="https://gimmi7.github.io/stromata/zk/gg20.html">https://gimmi7.github.io/stromata/zk/gg20.html</a></p>
+<h2 id="对比介绍tss开源库"><a class="header" href="#对比介绍tss开源库">对比介绍TSS开源库</a></h2>
+<ul>
+<li><a href="https://github.com/unboundsecurity/blockchain-crypto-mpc">blockchain-crypto-mpc</a>: {2-2},C, Lindell 写完paper，找了unboundsecurity 帮忙实现。Lindell去Coinbase做密码学主管，unboundsecurity也被Coinbase收购，不再维护。</li>
+<li><a href="https://github.com/ZenGo-X">Zengo</a>: {2-2},{t-n},rust, Zengo在TSS领域做了大量的research,同时贡献了大量的开源库，大部分 TSS 相关的 paper 实现都可以在Zengo 的github 上找到。</li>
+<li><a href="https://github.com/bnb-chain/tss-lib">tss-lib</a>: {t-n},go, Binance实现的GG18。</li>
+<li><a href="https://github.com/Safeheron/multi-party-ecdsa-cpp">multi-party-ecdsa-cpp</a>: {t-n},C++, Safeheron 实现了GG18，GG20, CMP</li>
+</ul>
+<p>这些开源实现都是不包含通信协议的，没有办法开箱即用</p>
+<ul>
+<li><a href="https://github.com/Gimmi7/twoparty-mpc">twoparty-mpc</a>, {2-2},rust,websocket, 利用Lindell-17实现了ECDSA,Schnorr聚合签名实现了EDDSA。</li>
+<li><a href="https://github.com/Gimmi7/MPCCrypto">MPCCrypto</a>, {2-2},java,websocket, 通过jni 调用unboundsecurity blocckchain-crypto-mpc, 添加了websocket作为通信协议。</li>
+</ul>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ul>
+<li><a href="https://blog.sagiri.tech/index.php/archives/55/">Shamir 门限秘密共享方案</a></li>
+<li><a href="https://academy.binance.com/en/articles/threshold-signatures-explained">Zengo: Threshold Signatures Explained</a></li>
+<li><a href="https://docs.wallet.unipass.id/architecture/master-key">Unipass: Master Key</a></li>
+<li><a href="https://docs.particle.network/overview/security">Particle Network: Security</a></li>
+<li><a href="https://www.coinbase.com/blog/digital-asset-management-with-mpc-whitepaper">CoinBase: Digital Asset Management with MPC (Whitepaper)</a></li>
+<li><a href="https://github.com/ZenGo-X/awesome-tss">Zengo: awesome-tss</a></li>
+<li><a href="https://www.zeeve.io/blog/what-is-the-threshold-signature-schemetss-multi-party-computationmpc-simplified/">zeeve: What is the Threshold signature scheme(TSS)? Multi-party Computation(MPC) simplified</a></li>
+<li><a href="https://medium.com/clavestone/bitcoin-multisig-vs-shamirs-secret-sharing-scheme-ea83a888f033">Bitcoin: Multisig vs. Shamir’s Secret Sharing Scheme</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../talks/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../java/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../talks/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../java/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

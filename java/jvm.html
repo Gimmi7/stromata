@@ -1,0 +1,377 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>JVM - Stromata Of Gimmi7</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../cryptography/index.html"><strong aria-hidden="true">1.</strong> Cryptography</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cryptography/rsa.html"><strong aria-hidden="true">1.1.</strong> RSA</a></li><li class="chapter-item expanded "><a href="../cryptography/ecc.html"><strong aria-hidden="true">1.2.</strong> ECC</a></li><li class="chapter-item expanded "><a href="../cryptography/paillier_homomorphic.html"><strong aria-hidden="true">1.3.</strong> Paillier Homomorphic</a></li><li class="chapter-item expanded "><a href="../cryptography/paillier_binomial.html"><strong aria-hidden="true">1.4.</strong> 二项式证明paillier同态</a></li><li class="chapter-item expanded "><a href="../cryptography/ed25519.html"><strong aria-hidden="true">1.5.</strong> Ed25519</a></li><li class="chapter-item expanded "><a href="../cryptography/schnorr.html"><strong aria-hidden="true">1.6.</strong> Schnorr</a></li><li class="chapter-item expanded "><a href="../cryptography/oblivious_transfer.html"><strong aria-hidden="true">1.7.</strong> Oblivious Transfer</a></li><li class="chapter-item expanded "><a href="../cryptography/pedersen_proof.html"><strong aria-hidden="true">1.8.</strong> PedersenProof</a></li><li class="chapter-item expanded "><a href="../cryptography/range_proof.html"><strong aria-hidden="true">1.9.</strong> Range Proof</a></li><li class="chapter-item expanded "><a href="../cryptography/pdl.html"><strong aria-hidden="true">1.10.</strong> PDL</a></li></ol></li><li class="chapter-item expanded "><a href="../mathmatics/index.html"><strong aria-hidden="true">2.</strong> Mathmatics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mathmatics/euclidean_algorithm.html"><strong aria-hidden="true">2.1.</strong> 欧几里德算法</a></li><li class="chapter-item expanded "><a href="../mathmatics/bezout_identity.html"><strong aria-hidden="true">2.2.</strong> 贝祖定理</a></li><li class="chapter-item expanded "><a href="../mathmatics/extended_euclidean_algorithm.html"><strong aria-hidden="true">2.3.</strong> 拓展欧几里德算法</a></li><li class="chapter-item expanded "><a href="../mathmatics/crt.html"><strong aria-hidden="true">2.4.</strong> 中国剩余定理</a></li><li class="chapter-item expanded "><a href="../mathmatics/group_theory.html"><strong aria-hidden="true">2.5.</strong> 群论</a></li><li class="chapter-item expanded "><a href="../mathmatics/affine_transfer.html"><strong aria-hidden="true">2.6.</strong> 仿射变换</a></li><li class="chapter-item expanded "><a href="../mathmatics/homogeneous_coordinates.html"><strong aria-hidden="true">2.7.</strong> 齐次坐标</a></li><li class="chapter-item expanded "><a href="../mathmatics/lagrange_interpolation.html"><strong aria-hidden="true">2.8.</strong> 拉格朗日插值法</a></li><li class="chapter-item expanded "><a href="../mathmatics/taylor_formula.html"><strong aria-hidden="true">2.9.</strong> 泰勒公式</a></li><li class="chapter-item expanded "><a href="../mathmatics/fft.html"><strong aria-hidden="true">2.10.</strong> 快速傅立叶变换</a></li></ol></li><li class="chapter-item expanded "><a href="../zkpaillier/index.html"><strong aria-hidden="true">3.</strong> ZK-Paillier</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../zkpaillier/zero_enc_proof.html"><strong aria-hidden="true">3.1.</strong> Zero encrypt proof</a></li><li class="chapter-item expanded "><a href="../zkpaillier/correct_ciphertext.html"><strong aria-hidden="true">3.2.</strong> Correct ciphertext proof</a></li></ol></li><li class="chapter-item expanded "><a href="../pratical_mpc.html"><strong aria-hidden="true">4.</strong> Pratical MPC</a></li><li class="chapter-item expanded "><a href="../schnorr_multisig/index.html"><strong aria-hidden="true">5.</strong> Schnorr Multisig</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schnorr_multisig/aggregated_signature.html"><strong aria-hidden="true">5.1.</strong> Aggregated Signature</a></li></ol></li><li class="chapter-item expanded "><a href="../particle_network.html"><strong aria-hidden="true">6.</strong> Particle Network</a></li><li class="chapter-item expanded "><a href="../lit_protocol.html"><strong aria-hidden="true">7.</strong> Lit Protocol</a></li><li class="chapter-item expanded "><a href="../zk/index.html"><strong aria-hidden="true">8.</strong> ZK</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../zk/pairing.html"><strong aria-hidden="true">8.1.</strong> Pairing</a></li><li class="chapter-item expanded "><a href="../zk/groth16.html"><strong aria-hidden="true">8.2.</strong> Groth16: zkSNARKs</a></li><li class="chapter-item expanded "><a href="../zk/gg20.html"><strong aria-hidden="true">8.3.</strong> GG20</a></li></ol></li><li class="chapter-item expanded "><a href="../talks/index.html"><strong aria-hidden="true">9.</strong> Talks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../talks/tss.html"><strong aria-hidden="true">9.1.</strong> TSS</a></li></ol></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">10.</strong> JAVA</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/parallel.html"><strong aria-hidden="true">10.1.</strong> 并行</a></li><li class="chapter-item expanded "><a href="../java/springboot.html"><strong aria-hidden="true">10.2.</strong> SpringBoot</a></li><li class="chapter-item expanded "><a href="../java/annotation.html"><strong aria-hidden="true">10.3.</strong> Annotation</a></li><li class="chapter-item expanded "><a href="../java/io.html"><strong aria-hidden="true">10.4.</strong> IO</a></li><li class="chapter-item expanded "><a href="../java/jvm.html" class="active"><strong aria-hidden="true">10.5.</strong> JVM</a></li><li class="chapter-item expanded "><a href="../java/mysql.html"><strong aria-hidden="true">10.6.</strong> MySQL</a></li><li class="chapter-item expanded "><a href="../java/distributedlock.html"><strong aria-hidden="true">10.7.</strong> Distributed Lock</a></li><li class="chapter-item expanded "><a href="../java/sentinel.html"><strong aria-hidden="true">10.8.</strong> Sentinel</a></li><li class="chapter-item expanded "><a href="../java/zookeeper.html"><strong aria-hidden="true">10.9.</strong> ZooKeeper</a></li><li class="chapter-item expanded "><a href="../java/qa.html"><strong aria-hidden="true">10.10.</strong> QA</a></li><li class="chapter-item expanded "><a href="../java/distributed_store.html"><strong aria-hidden="true">10.11.</strong> Distributed Store</a></li></ol></li><li class="chapter-item expanded "><a href="../travel/travelling_guideline.html"><strong aria-hidden="true">11.</strong> Travelling Guideline</a></li><li class="chapter-item expanded "><a href="../raft/raft.html"><strong aria-hidden="true">12.</strong> Raft</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../travel/wuhan.html"><strong aria-hidden="true">12.1.</strong> 武汉</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Stromata Of Gimmi7</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="jvm"><a class="header" href="#jvm">JVM</a></h1>
+<p><img src="../assets/jvm_memory.png" alt="jvm memory" /></p>
+<p><strong>程序计数器:</strong> 程序计数器用来记录当前正在执行的<strong>字节码指令</strong>的地址，程序计数器只存了一个地址。当一条指令执行完成后，程序计数器就会自动加1，指向下一条要执行的指令的地址，或者跳转到下一条要执行的指令的地址。</p>
+<ul>
+<li>CPU会在各个线程间不停地进行切换，当恢复执行时通过程序计数器就知道下一条指令应该执行什么。如果当前线程正在执行的是Java方法，程序计数器记录的是JVM字节码指令地址，如果是执行native方法，则是未指定(undefined)。</li>
+<li>Java控制逻辑需要依赖程序计数器来完成，比如分支，循环，跳转，异常处理，线程恢复等。</li>
+</ul>
+<p><strong>堆区内存分为:</strong></p>
+<ol>
+<li>新生代 (年轻代)：新对象和没达到一定年龄的对象都在新生代</li>
+<li>老年代：被长时间使用的对象，老年代代内存空间应该要比年轻代更大</li>
+</ol>
+<h2 id="jvm-参数"><a class="header" href="#jvm-参数">JVM 参数</a></h2>
+<ul>
+<li>-Xms7000m 设置堆内存初始大小为7000M</li>
+<li>-Xmx7000m 设置堆内存最大为7000M</li>
+<li>-Xmn2000m 设置堆内存的 young 区大小为2000M</li>
+<li>-Xss256k  设置每个线程的 stack 的大小为256k</li>
+<li>-XX:MetaspaceSize=N 设置元空间初始大小</li>
+<li>-XX:MaxMetaspaceSize=N 设置元空间最大值</li>
+<li>-XX:PretenureSizeThreshold 大于此值的对象直接分配在老年代，避免在 Eden 区和 Suvivior中频繁进行复制</li>
+<li>-XX:MaxTenuringThreshold 年龄达到MaxTenuringThreshold就会进入老年代</li>
+</ul>
+<h2 id="gc"><a class="header" href="#gc">GC</a></h2>
+<p>当前主流VM垃圾收集采用分代收集(generational collection)法,根据对象的存活周期，将内存分为几个不同的分区，比如JVM的 新生代，老年代。</p>
+<ul>
+<li>新生代-复制法</li>
+</ul>
+<p><img src="../assets/gc_copy.jpeg" alt="gc-copy" /></p>
+<blockquote>
+<p>将内存划分为大小相等的两块，每次只使用其中一块，当这一块内存用完了就将还存活的对象复制到另一块上面，然后再把使用过的内存空间进行一次清理。<br />
+<br />
+现在的商业虚拟机都采用复制法来回收新生代，但是并不是将新生代划分为大小相等的两块，而是分为一块较大的 Eden 空间和两块较小的 Survivor 空间，每次使用 Eden 空间和其中一块 Survivor。在回收时，将 Eden 和 Survivor 中还存活着的对象一次性复制到另一块 Survivor 空间上，最后清理 Eden 和使用过的那一块 Survivor。<br />
+<br />
+HotSpot 虚拟机的 Eden 和 Survivor 的大小比例默认为 8:1，保证了内存的利用率达到 90%。如果每次回收有多于 10% 的对象存活，那么一块 Survivor 空间就不够用了，此时需要依赖于老年代进行分配担保，也就是借用老年代的空间存储放不下的对象。</p>
+</blockquote>
+<ul>
+<li>老年代-标记整理算法</li>
+</ul>
+<p><img src="../assets/gc_marktidy.jpeg" alt="gc-marktidy" /></p>
+<blockquote>
+<p>让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存。</p>
+</blockquote>
+<h2 id="minor-gc-major-gc-full-gc"><a class="header" href="#minor-gc-major-gc-full-gc">Minor-GC, Major-GC, Full-GC</a></h2>
+<ul>
+<li>Minor-GC 又叫 Young-GC，只进行新生代的垃圾收集</li>
+<li>Major-GC 又叫 Old-GC， 只进行老年代的垃圾收集</li>
+<li>Full-GC，对全堆进行垃圾收集</li>
+</ul>
+<h2 id="full-gc的触发条件"><a class="header" href="#full-gc的触发条件">Full GC的触发条件</a></h2>
+<ul>
+<li>主动调用 System.gc()</li>
+<li>老年代空间不够
+<ul>
+<li>大对象直接进入老年代或者长期存活的对象进入老年代导致老年代空间不够</li>
+<li>使用复制算法的 minor GC 需要老年代的内存空间做担保，如果担保失败回执行 Full GC</li>
+</ul>
+</li>
+</ul>
+<h2 id="查看java使用的gc"><a class="header" href="#查看java使用的gc">查看java使用的GC</a></h2>
+<pre><code class="language-text">java -XX:+PrintCommandLineFlags -version
+-XX:InitialHeapSize=268435456 -XX:MaxHeapSize=4294967296 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+openjdk version "1.8.0_362"
+OpenJDK Runtime Environment (Zulu 8.68.0.21-CA-macos-aarch64) (build 1.8.0_362-b09)
+OpenJDK 64-Bit Server VM (Zulu 8.68.0.21-CA-macos-aarch64) (build 25.362-b09, mixed mode)
+
+-XX:+UseParallelGC 表示 java8 使用的是 ParallelGC
+</code></pre>
+<pre><code class="language-text">java -XX:+PrintGCDetails -version
+openjdk version "1.8.0_362"
+OpenJDK Runtime Environment (Zulu 8.68.0.21-CA-macos-aarch64) (build 1.8.0_362-b09)
+OpenJDK 64-Bit Server VM (Zulu 8.68.0.21-CA-macos-aarch64) (build 25.362-b09, mixed mode)
+Heap
+ PSYoungGen      total 76288K, used 2621K [0x000000076ab00000, 0x0000000770000000, 0x00000007c0000000)
+  eden space 65536K, 4% used [0x000000076ab00000,0x000000076ad8f748,0x000000076eb00000)
+  from space 10752K, 0% used [0x000000076f580000,0x000000076f580000,0x0000000770000000)
+  to   space 10752K, 0% used [0x000000076eb00000,0x000000076eb00000,0x000000076f580000)
+ ParOldGen       total 175104K, used 0K [0x00000006c0000000, 0x00000006cab00000, 0x000000076ab00000)
+  object space 175104K, 0% used [0x00000006c0000000,0x00000006c0000000,0x00000006cab00000)
+ Metaspace       used 2277K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 244K, capacity 384K, committed 384K, reserved 1048576K
+</code></pre>
+<h2 id="jvm-ergonomics"><a class="header" href="#jvm-ergonomics">JVM Ergonomics</a></h2>
+<p>不需要设置堆内存，新生代内存等。JVM会根据机器配置和日志自动动态调整JVM等各种内存尺寸。针对一些特殊场景通过设置 MaxGCPauseMillis,GCTimeRatio 这种 goal 就好，更加地符合人体工学。</p>
+<h2 id="gc-roots"><a class="header" href="#gc-roots">GC roots</a></h2>
+<p>现在的虚拟机一般都采用可达性分析算法来判断对象是否存活，可达性算法的原理是从一堆叫做 GC roots 的节点出发，遍历它们的子节点。这样可以得到一颗颗的引用树，遍历完毕之后，如果某些对象不在引用树中，那么这些对象就会被视为垃圾，可以被回收。</p>
+<h3 id="如果一个对象可以被回收就一定会被回收吗"><a class="header" href="#如果一个对象可以被回收就一定会被回收吗">如果一个对象可以被回收，就一定会被回收吗？</a></h3>
+<p>答案是否定了，如果一个对象可以被回收，还会执行一下这个对象的 finalize 方法，如果在 finalize 方法里面时对象链接到引用树上，这个对象就不会被回收了。finalize 方法只会被执行一次。</p>
+<h3 id="哪些对象可以做-gc-roots-呢"><a class="header" href="#哪些对象可以做-gc-roots-呢">哪些对象可以做 GC roots 呢</a></h3>
+<ul>
+<li>虚拟机栈中引用的对象(还在执行的方法引用的对象)</li>
+<li>本地方法栈中jni引用的对象(还在执行的Native方法引用的对象)</li>
+<li>元空间中静态属性引用的对象(静态属性引用的对象)</li>
+<li>元空间中常量引用的对象(常量引用的对象)</li>
+</ul>
+<h2 id="jvm-oom可能发生的区域"><a class="header" href="#jvm-oom可能发生的区域">JVM OOM可能发生的区域</a></h2>
+<p>JVM可能发生OOM的地方，可以总结为除了程序计数器(只存了一个地址，不会溢出)外，其他地方都有可能OOM.</p>
+<ul>
+<li>堆内存</li>
+<li>虚拟机栈，本地方法栈</li>
+<li>直接内存</li>
+<li>元空间</li>
+</ul>
+<h2 id="java类加载机制"><a class="header" href="#java类加载机制">Java类加载机制</a></h2>
+<p>Java类的生命周期如下图所示：
+<img src="../assets/java_jvm_classload.png" alt="Java类的生命周期" /></p>
+<p><strong>验证：</strong></p>
+<ul>
+<li>验证class文件是否以0xCAFEBABE开头，主次版本号是否在当前虚拟机的处理范围，常量池中的常量是否有不被支持的类型。</li>
+<li>对字节码的语义信息进行分析，判断是否符合Java语言规范的要求。</li>
+<li>通过数据流和控制流分析，确保语义是合法、符合逻辑的。</li>
+<li>验证符号引用引用，确保解析动作能够正确执行。</li>
+</ul>
+<p><strong>准备：</strong> 为静态变量在meta space分配内存，并将其初始化为数据类型的零值。</p>
+<p><strong>解析：</strong> 解析是将常量池内的符号引用替换为直接引用的过程。直接引用就是直接指向目标的指针。</p>
+<p>Java类的加载过程如下：</p>
+<ul>
+<li>通过一个类的完全限定名来获取其.class二进制字节流</li>
+<li>将这个字节流所代表的静态存储结构转化为元空间的运行时数据结构</li>
+<li>在Java堆中生成一个代表这个类的java.lang.Class对象(我们常用clazz表示)，作为对元空间中这个的类的元数据访问的引用
+<img src="../assets/java_jvm_classload_load.png" alt="Java类加载" /></li>
+</ul>
+<p>上面的加载过程可以自定义类加载器，从网络中获取类的.class文件。一般自定义加载器用来加载加密的类。防止代码被反编译。</p>
+<ul>
+<li>自定义类加载器只需要继承 ClassLoader抽象类，然后重写 findClass 方法即可。</li>
+<li>最好不要重写loadClass方法，因为这样容易破坏双亲委派模式</li>
+</ul>
+<p><strong>双亲委派的流程和好处：</strong></p>
+<p>JVM的类加载器从根节点开始依次为 BootStrapClassLoader -&gt; ExtClassLoader -&gt; AppClassLoader. <br />
+BootStrapClassLoader 主要用来加载 java.<em>开头的类库。<br />
+ExtClassLoader 主要用来加载 javax.</em> 开头的类库。<br />
+AppClassLoader 用来加载用户自己写的类。\</p>
+<p>双亲委派的过程就是一个类加载器在加载一个class时，它首先不会自己去尝试加载这个class,而是一级级地向上传递给父加载器尝试，到了根加载器如果没有加载成功，再一级级地向下传递给子加载器尝试。</p>
+<p>双亲委派机制主要是为了去重，在类加载过程中不要重复加载一个类。在JVM中，如果类的完全限定名相同，但是被不同的类加载器加载的class文件，会被认为是两个不同的类。在JVM中，一个类的唯一标识是<strong>类加载器+类名</strong>，这也就是为什么在有类缓存机制的条件下，仍然需要双亲委派机制。</p>
+<h2 id="自定义类加载器的使用场景"><a class="header" href="#自定义类加载器的使用场景">自定义类加载器的使用场景</a></h2>
+<ul>
+<li>用自定义类加载器实现Java类的隔离，比如tomcat使用不同的类加载器实例来加载不同的war包，这种情况下需要重写loadClass()方法为应用类打破双亲委派机制。</li>
+<li>加载远程类的实现，比如从网络中下载加密后的class文件进行加载，防止代码被反编译。</li>
+</ul>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/166190558">知乎：你知道JVM方法区是干什么用的吗</a></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/ergonomics.html#ergonomics">oracle: Java8 Ergonomics gctuning</a></li>
+<li><a href="https://blog.csdn.net/weixin_38007185/article/details/108093716">GC Roots 是什么？哪些对象可以作为 GC Root？看完秒懂</a></li>
+<li><a href="https://pdai.tech/md/java/jvm/java-jvm-x-overview.html">JVM相关知识体系详解</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/621308686">程序计数器工作原理</a></li>
+<li><a href="https://juejin.cn/post/6844903705171476493">Java自定义类加载器</a></li>
+<li><a href="https://www.cnblogs.com/ITPower/p/15374926.html">自定义类加载器在tomcat中的应用</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../java/io.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../java/mysql.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../java/io.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../java/mysql.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

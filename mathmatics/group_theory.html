@@ -1,0 +1,563 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>群论 - Stromata Of Gimmi7</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../cryptography/index.html"><strong aria-hidden="true">1.</strong> Cryptography</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cryptography/rsa.html"><strong aria-hidden="true">1.1.</strong> RSA</a></li><li class="chapter-item expanded "><a href="../cryptography/ecc.html"><strong aria-hidden="true">1.2.</strong> ECC</a></li><li class="chapter-item expanded "><a href="../cryptography/paillier_homomorphic.html"><strong aria-hidden="true">1.3.</strong> Paillier Homomorphic</a></li><li class="chapter-item expanded "><a href="../cryptography/paillier_binomial.html"><strong aria-hidden="true">1.4.</strong> 二项式证明paillier同态</a></li><li class="chapter-item expanded "><a href="../cryptography/ed25519.html"><strong aria-hidden="true">1.5.</strong> Ed25519</a></li><li class="chapter-item expanded "><a href="../cryptography/schnorr.html"><strong aria-hidden="true">1.6.</strong> Schnorr</a></li><li class="chapter-item expanded "><a href="../cryptography/oblivious_transfer.html"><strong aria-hidden="true">1.7.</strong> Oblivious Transfer</a></li><li class="chapter-item expanded "><a href="../cryptography/pedersen_proof.html"><strong aria-hidden="true">1.8.</strong> PedersenProof</a></li><li class="chapter-item expanded "><a href="../cryptography/range_proof.html"><strong aria-hidden="true">1.9.</strong> Range Proof</a></li><li class="chapter-item expanded "><a href="../cryptography/pdl.html"><strong aria-hidden="true">1.10.</strong> PDL</a></li></ol></li><li class="chapter-item expanded "><a href="../mathmatics/index.html"><strong aria-hidden="true">2.</strong> Mathmatics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mathmatics/euclidean_algorithm.html"><strong aria-hidden="true">2.1.</strong> 欧几里德算法</a></li><li class="chapter-item expanded "><a href="../mathmatics/bezout_identity.html"><strong aria-hidden="true">2.2.</strong> 贝祖定理</a></li><li class="chapter-item expanded "><a href="../mathmatics/extended_euclidean_algorithm.html"><strong aria-hidden="true">2.3.</strong> 拓展欧几里德算法</a></li><li class="chapter-item expanded "><a href="../mathmatics/crt.html"><strong aria-hidden="true">2.4.</strong> 中国剩余定理</a></li><li class="chapter-item expanded "><a href="../mathmatics/group_theory.html" class="active"><strong aria-hidden="true">2.5.</strong> 群论</a></li><li class="chapter-item expanded "><a href="../mathmatics/affine_transfer.html"><strong aria-hidden="true">2.6.</strong> 仿射变换</a></li><li class="chapter-item expanded "><a href="../mathmatics/homogeneous_coordinates.html"><strong aria-hidden="true">2.7.</strong> 齐次坐标</a></li><li class="chapter-item expanded "><a href="../mathmatics/lagrange_interpolation.html"><strong aria-hidden="true">2.8.</strong> 拉格朗日插值法</a></li><li class="chapter-item expanded "><a href="../mathmatics/taylor_formula.html"><strong aria-hidden="true">2.9.</strong> 泰勒公式</a></li><li class="chapter-item expanded "><a href="../mathmatics/fft.html"><strong aria-hidden="true">2.10.</strong> 快速傅立叶变换</a></li></ol></li><li class="chapter-item expanded "><a href="../zkpaillier/index.html"><strong aria-hidden="true">3.</strong> ZK-Paillier</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../zkpaillier/zero_enc_proof.html"><strong aria-hidden="true">3.1.</strong> Zero encrypt proof</a></li><li class="chapter-item expanded "><a href="../zkpaillier/correct_ciphertext.html"><strong aria-hidden="true">3.2.</strong> Correct ciphertext proof</a></li></ol></li><li class="chapter-item expanded "><a href="../pratical_mpc.html"><strong aria-hidden="true">4.</strong> Pratical MPC</a></li><li class="chapter-item expanded "><a href="../schnorr_multisig/index.html"><strong aria-hidden="true">5.</strong> Schnorr Multisig</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../schnorr_multisig/aggregated_signature.html"><strong aria-hidden="true">5.1.</strong> Aggregated Signature</a></li></ol></li><li class="chapter-item expanded "><a href="../particle_network.html"><strong aria-hidden="true">6.</strong> Particle Network</a></li><li class="chapter-item expanded "><a href="../lit_protocol.html"><strong aria-hidden="true">7.</strong> Lit Protocol</a></li><li class="chapter-item expanded "><a href="../zk/index.html"><strong aria-hidden="true">8.</strong> ZK</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../zk/pairing.html"><strong aria-hidden="true">8.1.</strong> Pairing</a></li><li class="chapter-item expanded "><a href="../zk/groth16.html"><strong aria-hidden="true">8.2.</strong> Groth16: zkSNARKs</a></li><li class="chapter-item expanded "><a href="../zk/gg20.html"><strong aria-hidden="true">8.3.</strong> GG20</a></li></ol></li><li class="chapter-item expanded "><a href="../talks/index.html"><strong aria-hidden="true">9.</strong> Talks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../talks/tss.html"><strong aria-hidden="true">9.1.</strong> TSS</a></li></ol></li><li class="chapter-item expanded "><a href="../java/index.html"><strong aria-hidden="true">10.</strong> JAVA</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../java/parallel.html"><strong aria-hidden="true">10.1.</strong> 并行</a></li><li class="chapter-item expanded "><a href="../java/springboot.html"><strong aria-hidden="true">10.2.</strong> SpringBoot</a></li><li class="chapter-item expanded "><a href="../java/annotation.html"><strong aria-hidden="true">10.3.</strong> Annotation</a></li><li class="chapter-item expanded "><a href="../java/io.html"><strong aria-hidden="true">10.4.</strong> IO</a></li><li class="chapter-item expanded "><a href="../java/jvm.html"><strong aria-hidden="true">10.5.</strong> JVM</a></li><li class="chapter-item expanded "><a href="../java/mysql.html"><strong aria-hidden="true">10.6.</strong> MySQL</a></li><li class="chapter-item expanded "><a href="../java/distributedlock.html"><strong aria-hidden="true">10.7.</strong> Distributed Lock</a></li><li class="chapter-item expanded "><a href="../java/sentinel.html"><strong aria-hidden="true">10.8.</strong> Sentinel</a></li><li class="chapter-item expanded "><a href="../java/zookeeper.html"><strong aria-hidden="true">10.9.</strong> ZooKeeper</a></li><li class="chapter-item expanded "><a href="../java/qa.html"><strong aria-hidden="true">10.10.</strong> QA</a></li><li class="chapter-item expanded "><a href="../java/distributed_store.html"><strong aria-hidden="true">10.11.</strong> Distributed Store</a></li></ol></li><li class="chapter-item expanded "><a href="../travel/travelling_guideline.html"><strong aria-hidden="true">11.</strong> Travelling Guideline</a></li><li class="chapter-item expanded "><a href="../raft/raft.html"><strong aria-hidden="true">12.</strong> Raft</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../travel/wuhan.html"><strong aria-hidden="true">12.1.</strong> 武汉</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Stromata Of Gimmi7</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="群论"><a class="header" href="#群论">群论</a></h1>
+<p><img src="../assets/group.png" alt="group" />
+<img src="../assets/field.png" alt="field" /></p>
+<p>群论是抽象代数的一个分支，主要研究一个被称为【群】的代数结构。</p>
+<p>一个群 = 一个集合 + 一个二元运算。集合由一堆元素构成（比如 数字集合， 点集合， 符号集合）， 二元运算结合任意两个元素 a 和 b 形成了一个属于集合的元素。一个群应该满足下面4个属性:</p>
+<ol>
+<li>closure： 封闭性，二元运算的结果还是属于集合。</li>
+<li>associativity: 结合律, 举个例子： \( (a * b) * c = a * (b * c) \)</li>
+<li>identity element: 单位元，单位元跟二元运算有关，比如加法的单位元为0，乘法的单位元为1，\( a * e = e * a= a \).</li>
+<li>inverse: 逆元，\( a * a^{-1} = a^{-1} * a = e \)</li>
+</ol>
+<p>如果除了上面4个条件之外，群还满足交换律，则群为<strong>交换群</strong>(commutative group)，又叫做<strong>阿贝尔群</strong>(Abelian group) .</p>
+<p>举个例子： 椭圆曲线上面的【点集】和 【点的加法】 就构成了一个群。 两个点相加得到的点依然在椭圆曲线上，满足封闭性。\( (P_1+P_2)+P_3 = P_1 + (P_2+P_3) \) 满足结合律。 椭圆曲线的单位元是无穷远点，任何点和无穷远点相加，结果等于自身。椭圆曲线的逆元是一个点关于 x 轴对称的点，一个点和该点的逆元相加，结果等于无穷远点。</p>
+<h2 id="群的阶和集合元素的阶"><a class="header" href="#群的阶和集合元素的阶">群的阶和集合元素的阶</a></h2>
+<p>群的阶就是集合中元素的个数。</p>
+<p>集合元素的阶就是由元素反复进行二元运算生成的子集合的阶。如果二元运算是乘法，那么元素 a 的阶就是使得 \( a^m=e \) 成立的最小正整数 m 。</p>
+<h2 id="群的性质"><a class="header" href="#群的性质">群的性质</a></h2>
+<ul>
+<li>(消去律) \(a * b= a * c \Rightarrow b=c \)</li>
+<li>方程 \( a * x =b  \) 有唯一解， \( x \in G \)</li>
+<li>\( (a * b)^{-1}= b^{-1} * a^{-1} \)</li>
+<li>\( (a^{-1})^{-1} = a \)</li>
+</ul>
+<h2 id="判断子群"><a class="header" href="#判断子群">判断子群</a></h2>
+<p>定理：H是G的非空子集，对于任意 \( a,b \in H \), 都有 \( a* b^{-1} \in H \), 则 H 是 G 的子群。</p>
+<p><strong>Proof:</strong></p>
+<ul>
+<li>先证单位元: 当 a=b 时，有 \( a * a^{-1} = e \in H \), 并且 \( a*e=e*a=a \),所以G的单元e属于集合H,并且e同时也是H的单位元。</li>
+<li>再证逆元，我们需要证明任意一个\( a \in H \),它的逆元 \( a^{-1} \in H \), 这里使用\( e*a^{-1}=a^{-1} \in H \).故而 \( a^{-1} \) 不仅是a在G中的逆元，同时也是a在H中的逆元。</li>
+<li>证明封闭性，封闭性需要证明\( a*b \in H \), 因为\( b^{-1} \in H \), 有 \( a*b=a*(b^{-1})^{-1} \in H \)</li>
+<li>结合律：因为G是个群，它的子集的元素也必然满足结合律。</li>
+</ul>
+<p>定理2: H是群G的非空子集，如果H是有限集，而且G的运算\( * \)在H上满足封闭性，则H是G的子群。</p>
+<h2 id="陪集coset"><a class="header" href="#陪集coset">陪集(coset)</a></h2>
+<p>子群H是群G都子群，H可以用来把G分解成多个元素个数相等且互不相交的子集，这些子集被称为陪集。   <br />
+若 \( a \in G \), 则
+\[ aH :=\{a*h | h\in H\} \]
+称为 H 关于 a 在 G 中的左陪集 (left cosets),同理，<br />
+\[ Ha :=\{ h*a | h\in H \} \]
+称为 H 关于 a 在 G 中的右陪集(right cosets).</p>
+<p>陪集的生成过程就是在群G中任意选一个元素a,将a与子群H的元素分别进行二元运算，得到的集合就是H关于a在G中的陪集。其中 a 叫做代表元(representative). 陪集的符号一般表示为 \([a]_H\).</p>
+<p><strong>陪集的性质：</strong></p>
+<ul>
+<li>\(a \in [a]_H\), 代表元一定是陪集的元素，因为子集一定包含单位元，\(e*a=a*e=a\)</li>
+<li>\( [e]_H=H \), 代表元为单位元时，陪集和子集相等。</li>
+<li>\( a\in H \Longleftrightarrow [a]_H=H \), 代表元是子集的元素时，生成的陪集和子集相等。<br />
+证明： \(a \in H \),  a 和 H 的元素进行二元运算时，由于H具有封闭性，二元运算的结果一定含于H,即 \( [a]_H \subseteq H \); <br />
+另一方面：\( \forall b \in H , a\in H \)  <br />
+\( a^{-1}* b \in H \), 将\( a^{-1}*b \)看做一个整体，与 a 进行二元运算  <br />
+\( a*(a^{-1}*b) \in [a]_H \Rightarrow b\in [a]_H \Rightarrow H \subseteq [a]_H  \Rightarrow [a]_H=H \)</li>
+<li>\( [a]_H =[b]_H \Leftrightarrow a^{-1}*b \in H (或 b^{-1}*a \in H ) \)    <br />
+证明： \( H=\{ e, \cdots, h, \cdots \} \) <br />
+\( [a]_H=\{ a,\cdots,a*h,\cdots \} \)  <br />
+\( [b]_H=\{b,\cdots,b*h,\cdots\} \)  <br />
+因为H关于a的陪集等于H关于b的陪集，所以 b 必定等于 a 与 H 中某个元素进行二元运算，即 <br />
+\( b=a*h \Rightarrow a^{-1}*b=h \)  <br />
+又因为 h 是 H 中的元素 <br />
+所以 \( a^{-1}*b \in H \)</li>
+</ul>
+<h2 id="拉格朗日定理lagranges-theorem"><a class="header" href="#拉格朗日定理lagranges-theorem">拉格朗日定理(Lagrange's theorem)</a></h2>
+<p>定理： G 是<strong>有限群</strong>， H是G的任意子群，则
+\[ ord(H) | ord(G) \]</p>
+<p>证明：因为H的所有陪集\( [a_1]_H,[a_2]_H,\cdots,[a_n]_H \)其实是对G的划分，且每个陪集的元素个数相等(等于子集的阶),所以\( |G|=k|H| \), 其中k表示通过H生成的陪集的个数。</p>
+<p>举个例子： 群 \( Z_6= \{0,1,2,3,4,5\} \)  <br />
+子群 \( 3Z_6=3\times \{0,1,2,3,4,5\}=\{0,3\} \) <br />
+陪集: <br />
+$ [0]<em>{3Z_6}=[3]</em>{3Z_6}={0,3} $ <br />
+$ [1]<em>{3Z_6}=[4]</em>{3Z_6}={1,4} $ <br />
+$ [2]<em>{3Z_6}=[5]</em>{3Z_6}={2,5} $</p>
+<h2 id="正规子群normal-subgroup和商群quotient-group"><a class="header" href="#正规子群normal-subgroup和商群quotient-group">正规子群(normal subgroup)和商群(quotient group)</a></h2>
+<p>定义：设N是群G的子群，如果对于 $ \forall a\in G $,都有 $ aN=Na $,称N为G的正规子群。</p>
+<p>给定一个正规子群N,搭配上群G的元素，就可以构造出一些陪集，这些陪集集中起来，就形成了一个集合，这个集合表示如下：
+$$ G/N={ [a]_N | a\in G } $$
+这个集合的元素是陪集，给这个集合搭配上如下的二元运算：
+$$ [a]_N <em>[b]_N := [a</em>b]_N $$
+就构成了商群，$(G/N,*)$称为群G在模N下的商群。</p>
+<p><strong>商群的研究范围：</strong>
+商群的元素是一堆陪集，这些陪集里面除了N(平凡陪集)以外，其他的陪集的元素都不属于正规子群，故而，商群的研究范围主要就是正规子群之外的那些元素。</p>
+<p><strong>商群的阶：</strong>
+$[G:N]=\frac{|G|}{|N|}$</p>
+<p><strong>商群的性质在阿贝尔群下的表现：</strong>
+阿贝尔群的子群都是正规子群(通过交互律可证)，阿贝尔群的任意子群都可以构造商群，阿贝尔群的子群构造的商群也是阿贝尔群。</p>
+<p><strong>陪集和剩余类等价：</strong>
+在整数群里，陪集和剩余类本质上是一个东西，都是等价关系下的等价类。$ Z/nZ={[0],[1],\cdots,[n-1]}=Z_n $</p>
+<h2 id="数学映射的定义"><a class="header" href="#数学映射的定义">数学映射的定义</a></h2>
+<p><img src="../assets/math_map.png" alt="math_map" /></p>
+<h2 id="群同态group-homomorphism"><a class="header" href="#群同态group-homomorphism">群同态(group homomorphism)</a></h2>
+<p><img src="../assets/group_homomorphism.png" alt="group_homomorphism" /></p>
+<p><strong>定义:</strong> <br />
+设群 $(G,<em>)$ 和群 $(G',\Box)$, 如果函数 $ f: G \rightarrow G' $ 对于 $ \forall a,b \in G $ , 都有
+$$ f(a</em>b)=f(a)\Box f(b) $$
+则称 f 为 $ (G,*) $ 到 $(G',\Box)$ 的群同态。</p>
+<p><strong>群同态的作用：</strong> <br />
+根据定义可知，群同态在元素映射以后，元素之间的运算规律仍然得到了保持。有的群比较容易分析，比如常见的整数模n加法群，有的群分析起来就不太方便，这时候就可以利用群同态的特效通过简单群来分析麻烦群。另外一个用途就是用于同态加密计算，只要映射函数不可逆，就可以把一个群的二元运算映射到同态群上面计算，达到加密计算的效果。</p>
+<p><strong>同态像(homomorphic image):</strong> <br />
+G中的元素经过f映射到G'后，得到的可能只是G'的子集，也就是说，G'中的某些元素，在G中可能找不到原像。因此，就有了同态像的概念，又称为像，像指的是G'中能找到原像的那些元素构成的子集(f的同态像)。表示为$ Im\ f $</p>
+<p><strong>同态核(homomorphic kernel):</strong> <br />
+G中的元素经过f映射后等于G'的单位元的元素构成同态核，表示为$ Ker \ f $</p>
+<p><strong>阿贝尔群的m次方映射(m-power mape):</strong> <br />
+G是阿贝尔群</p>
+<p>$$ G \underrightarrow f G $$
+$$ a \rightarrow f(a)=a^m $$</p>
+<p>$ f(a_b)=(a_b)^m=a^m *b^m= f(a)*f(b) $ <br />
+$ Im\ f=G^m $  <br />
+$ Ker\ f=G{m}:={a\in G | a^m =e} $ \</p>
+<h2 id="群同态的性质"><a class="header" href="#群同态的性质">群同态的性质</a></h2>
+<ul>
+<li>$f(e)=e'$, (e和e'分别为群G和G'的单位元), 单位元映射后仍然是单位元 <br />
+证明：$ f(e) \Box e' = f(e) = f(e*e)= f(e)\Box f(e) $</li>
+<li>$ f(a^{-1})=f(a)^{-1}, \forall a \in G $, 互为逆元的元素的像依然互为逆元。 <br />
+证明：$ f(a^{-1}) \Box f(a) = f(a^{-1}*a)=f(e) $</li>
+<li>H是G的子群，则 f(H) 是 G'的子群，子群的像依然是子群。  <br />
+证明：$ \forall a,b \in H, f(a), f(b) \in f(H) $, 则  <br />
+$ f(a)\Box f(b)^{-1}= f(a)\Box f(b^{-1})= f(a*b^{-1}) \in f(H) $</li>
+<li>如果像是映射群的子群，那么原像就是就是G的子群。同态核$ Ker\ f $是G的子群，同态像$Im\ f$是G'的子群。</li>
+<li>$ f(a^m)=f(a)^m $ <br />
+证明： $ f(a^m)= f(a <em>\cdots</em> a)= f(a)\Box f(a) \Box\cdots\Box f(a)= f(a)^m $</li>
+<li>同态核$ Ker\ f $是正规子群。<br />
+证明：要证明同态核是正规子集，只需要证明它的左右陪集相等。<br />
+$ \forall a \in G $, 有 $ a (Ker f)={a<em>h| h \in Ker f } $ <br />
+$ \exists h' \in Ker f $, 有 $ a</em>h=h'<em>a $ <br />
+令$ a</em>h<em>a^{-1}= h' \in Ker f $, 因为 rhs 属于同态核，只需要证明 lhs 属于同态核即可，则只需要证明 lhs 经过映射后等于e'。 <br />
+$ f(a</em>h*a^{-1})=f(a)\Box f(h)\Box f(a^{-1})= f(a)\Box e' \Box f(a^{-1})= f(a) \Box f(a^{-1})= e' $</li>
+</ul>
+<h2 id="群同构group-isomorphism"><a class="header" href="#群同构group-isomorphism">群同构(group isomorphism)</a></h2>
+<p>如果一个群同态是个双射函数，那它就叫群同构。G与G'同构，记为$ G\cong G' $. 同构的群，它们本质上就是同一个群，因为它们拥有相同的性质，比如G的生成元对于的像也是G'的生成元。</p>
+<p><strong>第一同构定理(first isomorphism theorem):</strong>
+第一同构定理又叫【基本同态定理】(FHT,fundamental homomorphism theorem). \</p>
+<p>定理： 设群$ (G,*) $ 和群$ (G', \Box) $, $f: G \rightarrow G' $是群同态(同态核是 Ker f, 同态像 Im f), 则
+$$ G/Ker f \cong Im f $$
+同态核构造的商群 $ {[a]_{Ker f} | a\in G} $ 和同态像同构, 这个群同构就是把商群里面的陪集映射成代表元的像，代表元的像和具体的f相关。</p>
+<h2 id="循环群"><a class="header" href="#循环群">循环群</a></h2>
+<ul>
+<li>任意无限循环群都只有2个生成元</li>
+<li>任意循环群都是阿贝尔群  <br />
+证明： $ \forall a,b \in <g> $, 设 $ a=g^r,b=g^k $, 则 <br />
+$ a<em>b=g^r</em> g^k= g^{r+k}=g^{k+r}=g^k * g^r $</li>
+<li>有限循环群都阶是n,则生成元g的阶也是n</li>
+<li>正整数 d|n, n阶有限循环群恰有唯一的d阶子群。 <br />
+证明：（存在性）d|n, 元素 $ g^{\frac{n}{d}} $ 阶为d,因为使得 $(g^{\frac{n}{d}})^x= e $ 成立的最小的x为d. <br />
+则子群 $ &lt;g^{\frac{n}{d}}&gt; $ 的阶是d, 故而存在阶为d的子群 $ &lt;g^{\frac{n}{d}}&gt; $.  <br />
+(唯一性)反证法。 假设存在另一个d阶的循环子群$ &lt;g^k&gt; $, 则 $ (g^k)^d =e \rightarrow n|kd \rightarrow \frac{n}{d}|k $, 也就是说 k 是 $ \frac{n}{d} $的倍数，那么 $ g^k $ 就可以由 $g^{\frac{n}{d}}$ 生成，所以 $ g^k \in &lt;g^{\frac{n}{d}}&gt; $, 有 $&lt;g^k&gt;$ 是 $ &lt;g^{\frac{n}{d}}&gt; $ 的子群，因为二者的阶都为d,所以两个群是同一个循环群。</li>
+</ul>
+<p>举个例子： 循环群G的阶是15，15的正因子为 1，3，5，15，所以，G一共有4个子群，它们的阶分别为 1，3，5，15.</p>
+<ul>
+<li>n阶有限循环群 $ <g> , \forall k \in Z $,有 $g^k$ 的阶是 $ \frac{n}{gcd(n,k)} $  <br />
+证明: 假设 $g^k$ 的阶为m, 则 $g^{km} = e \rightarrow n|km $, <br />
+则 km 既是 k 的倍数，同时也是 n 的倍数， 有 $ km=lcm(k,n)=\frac{nk}{gcd(k,n)} $ <br />
+所以 $ m=\frac{n}{gcd(k,n)} $</li>
+<li>当 $ gcd(k,n)=1 $ 时，$ g^k 的阶为 \frac{n}{gcd(k,n)}=n, g^k $ 就是循环群的生成元。与 n 互素的 k 一共有 $ \phi(n) $ 个，即生成元的个数。当已知一个生成元g时，求出所有与n互素的k,那么 $ g^k $ 就是所有的生成元。</li>
+<li>素数阶的群必然是(有限)循环群。    <br />
+证明：设G是群，且 $|G|=p $, p是素数。 <br />
+设 $a\in G, 且 a \not= e $, a的阶是k( $a^k=e $ )  <br />
+则 $k | p $, 因为p是素数，所以k要么等于1，要么等于p，由因为 $a^k \not= e $, 所以 k=p. <br />
+也就是说 a 的阶为p, a就是群G都生成元，所以G是（有限）循环群。 <br />
+该定理可以归纳概括为：素数阶的群一定是<strong>循环群</strong>，它的生成元是<strong>任一非单位元</strong>。 这个定理在密码中经常用来构造循环群。<br />
+<strong>举个例子:</strong> $Z_5 = {0,1,2,3,4}, ord(Z_5)=5 $ <br />
+取 a=2, 则有循环子群为 $H={a,a^2,...,a^{n-1}, a^n=e}$, 即 $ (2, 2^2=4, 2^3=1, 2^4=3, 2^5=0) $，这里的指数是加法模5的一种模拟表示方法。</li>
+</ul>
+<p><strong>利用同构举一反三:</strong>  <br />
+同构的群本质上就是同一个群，它们的结构性质完全一样。</p>
+<ul>
+<li>无限循环群：同构于 $Z$</li>
+<li>n阶有限循环群：同构于 $Z_n $</li>
+</ul>
+<p>证明： 设无限循环群为 $<g>, Z $,  中任一元素为 $z$, 映射函数 $f=g^z $ . <br />
+$\forall z,z' \in Z, f(z+z')=g^{z+z'}=g^z *g^{z'}=f(z)*f(z') $  <br />
+所以这个映射是一个群同态，而且同态像里面的每一个 $g^z$ 都有原像 z, 所以这个映射是一个满同态。 <br />
+根据同态核为两种情况证明单射：\</p>
+<ol>
+<li>如果同态核只包含单位元 0 即 $Ker f={0} $, 那么 $f(0)=g^0=e $, 映射是一个单射。即是满射又是单射，所以映射是一个群同构，因为是 Z 和循环群 $<g> $同构，可见这个循环群是个无限群。这就说明，任何无限循环群都同构于Z,它们都是同一个东西，Z的所有性质都可以用于无限循环群。</li>
+<li>如果同态核除了单位元0还包含其他元素，因为Z的子群都满足格式 $nZ$, 而同态核也是Z的子群，则有 ${0} \subset Ker f=nZ \quad (n为正整数) $， 根据第一同构定理，可以利用群同态构造一个群同构，$Z/Ker f= Z/nZ= Z_n \cong Im f=<g> $, 又因为 $Z_n$是个有限群，所以循环群也是一个有限群，$Z_n$ 有n个元素，循环群也就有n个元素。也就是说，任何n阶有限循环群都同构于 $Z_n$.</li>
+</ol>
+<ul>
+<li>G是n阶有限循环群，d是n的正因子，G里的d 阶元素一共有 $\phi (d) $ 个。  <br />
+证明： 因为 $G \cong Z_n $, 设 $a \in G $, 求G的d阶元素个数，就是求当 $ a^d=e $ 时，满足条件的a的个数。<br />
+也就是求 $Z_n $ 中， 当 $dz=0 $ 时，满足条件的z的个数， 也就是求子群 $Z_n{d} := {a \in Z_n |da=0} $中的d阶元素的个数(也是这个循环群的生成元的个数)，又因为 $Z_n{d} $ 是个d阶有限循环群，所有它与 $Z_d$ 同构，所以问题就等价于求 $Z_d$ 的生成元的个数，而 $Z_d 一共有 \phi(d) $ 个生成元。</li>
+</ul>
+<p><img src="../assets/d-order_elements_of_group.png" alt="有限循环群的d阶元素个数" /></p>
+<h2 id="z_n-的性质"><a class="header" href="#z_n-的性质">$Z_n^* $的性质</a></h2>
+<p>$Z_n^* = {a|a=0,\cdots,n-1, \quad gcd(a,n)=1} $ 是乘法群.</p>
+<p><strong>乘法阶(multiplicative order):</strong> <br />
+定义： $a \in Z, gcd(a,n)=1 $, 设k是满足
+$$ a^k \equiv 1 \pmod{n} $$
+的最小正整数，称k是a在模n下的乘法阶，记为 $ord_n(a)$, 其实这里的k同时也是元素a的阶。</p>
+<p><strong>原根(primitive root):</strong> <br />
+定义： $g \in Z, gcd(g,n)=1 $, 如果 $ord_n(g)=\phi(n) $， 则称g是模n下的原根。<br />
+则 $g^{ord_n(g)} \equiv g^{\phi(n)} \equiv 1 \pmod{n} $</p>
+<p><strong>原根存在的条件:</strong> <br />
+设 p 是奇素数，e是正整数 <br />
+$n=1,2,4,p^e,2p^e $ 时，模n下存在原根。<br />
+RSA中 $n=p\times q $,p,q是不相等的素数，所以RSA的模数下就不存在原根。</p>
+<p><strong>存在原根的 $Z_n^*$ 是循环群：</strong>
+如果模n下存在原根，原根的阶是 $\phi(n)$， 而 $Z_n^<em>$ 的阶也是 $\phi(n)$, 所以原根g就是 $Z_n^</em>$ 的生成元，此时，$Z_n^<em>$ 就是循环群。 明显 $Z_p^</em>$ 就是一个循环群。</p>
+<h2 id="如何找原根生成元"><a class="header" href="#如何找原根生成元">如何找原根(生成元)</a></h2>
+<p>根据拉格朗日定理，子群的阶整除原群的阶。 则有 $\forall a\in Z_n^*, ord_n(a) | \phi(n) $   <br />
+a是原根 $\rightarrow ord_n(a)=\phi(n) $ <br />
+对 $\phi(n) $做素因子分解有：$\phi(n)= p_1^{e_1} \cdots p_r^{e_r} $   <br />
+当a不是原根时，假设a的阶为 $ord_n(a)=d $, 根据拉格朗日定理有 $d|\phi(n), d&lt;\phi(n) $, <br />
+$$d|\phi(n) \Rightarrow \exists p_j, d|\frac{\phi(n)}{p_j} \Rightarrow \exists q, dq=\frac{\phi(n)}{p_j} $$
+上面的推导时因为 d 是 $\phi(n)$ 的因子，且 $d&lt;\phi(n)$，那d就一定等于 $\phi(n)$ 的唯一质数分解式子中的某些素数的某些指数次的组合。<br />
+因为a的阶为d,则有 $ a^d \equiv 1 \pmod{n} \Rightarrow a^{\frac{\phi(n)}{p_j}} \equiv (a^d)^q \equiv 1 \pmod{n} $ <br />
+所以 $a是原根 \Leftrightarrow a^{\frac{\phi(n)}{p_i}} \not\equiv 1 \pmod{n}, i=(1,\cdots,r) $</p>
+<p>故而，找 $Z_n^*$原根的算法如下：</p>
+<ol>
+<li>唯一质数分解 $\phi(n)= p_1^{e_1}p_2^{e_2}\cdots p_r^{e_r} $</li>
+<li>任意选择一个 $a \in Z_n^* $, 即任意选择一个与n互质的数</li>
+<li>if $a^{\frac{\phi(n)}{p_i}} \not\equiv 1 \pmod{n}, i=(1,2,\cdots,r) $ <br />
+$ \quad output \quad a $  <br />
+else goto  2</li>
+</ol>
+<p><strong>举个例子：</strong><br />
+求 $Z_{19}^<em>$ 的所有生成元。 <br />
+$\phi(19)=19-1=18=2\times 3^2 $   <br />
+$ p_1=2, p_2=3 $  <br />
+$ \frac{\phi(n)}{p_i}= { \frac{18}{2}=9, \frac{18}{3}=6 } $ <br />
+任意选择与19互质的数2, 计算 $a^{\frac{\phi(n)}{p_i}}={2^9 \not\equiv 1 \pmod{19}, 2^6 \not\equiv 1 \pmod{19} } $  <br />
+所以 2 是 $Z_{19}^</em>$ 的一个生成元。</p>
+<p>由于在循环群 $Z_n$ 中, 群的阶为n，如果已知一个生成元为g, 当 gcd(k,n)=1 时，$g^k$的阶为 $\frac{n}{gcd(n,k)}=n $, 则 g^k 也是群 $Z_n$的生成元, $Z_n^*$ 与 $Z_n$ 同构，直接套用 $Z_n $的性质来求解所有的生成元。</p>
+<p>$Z_{19}^<em>$的阶为$\phi(19)=19-1=18$， 与18互质的数有 $ k={1,5,7,11,13,17} $, 则 <br />
+$
+2^1 \equiv 2 \pmod{19}, \
+2^5 \equiv 13 \pmod{19},  \
+2^7 \equiv 14 \pmod{19},  \
+2^{11} \equiv 15 \pmod{19}  \
+2^{13} \equiv 3 \pmod{19}  \
+2^{17} \equiv 10 \pmod{19}  \
+$
+也就是说 ${2,3,10,13,14,15} $ 都是 $Z_{19}^</em>$ 的生成元。<br />
+验证一下：<br />
+$
+3^9 \equiv 18 \pmod{19}, 3^6 \equiv 7 \pmod{19} \
+10^9 \equiv 18 \pmod{19}, 10^6 \equiv 11 \pmod{19} \
+13^9 \equiv 18 \pmod{19}, 13^6 \equiv 11 \pmod{19} \
+14^9 \equiv 18 \pmod{19}, 14^6 \equiv 7 \pmod{19} \
+15^9 \equiv 18 \pmod{19}, 15^6 \equiv 11 \pmod{19} \
+$</p>
+<h2 id="离散对数的性质"><a class="header" href="#离散对数的性质">离散对数的性质</a></h2>
+<ul>
+<li>$a \equiv g^r \pmod{n} \Leftrightarrow log_g(a) \equiv r \pmod{\phi(n)} $   <br />
+证明： 令 $x=log_g(a) $, 则 $a\equiv g^x \pmod{n} $ <br />
+$\Leftrightarrow g^x \equiv g^r \pmod{n}$   <br />
+在循环群中生成元生成的元素相等，说明x和r之间的距离正好差了一个循环(生成元的阶 $\phi(n)$)，也就是说x,r在循环下同余 <br />
+$\Leftrightarrow x \equiv r \pmod{\phi(n)}$   <br />
+$\Leftrightarrow log_g(a) \equiv r \pmod{\phi(n)}$   \</li>
+<li>根据上面的性质可以联想到 $g^r \pmod{n} = g^{r \bmod \phi(n)} \pmod{n} $, 因为生成元进行指数次运算，这些指数如果在生成元的阶下同余的话，得到的结果是相等的。</li>
+</ul>
+<p>设 gcd(b,n)=1, $y=log_g(b) $， m是正整数，h也是原根:</p>
+<ul>
+<li>$log_g(ab) \equiv log_g(a)+log_g(b) \pmod{\phi(n)} $  <br />
+证明: <br />
+$
+ab \equiv g^x g^y \equiv g^{x+y} \pmod{n} \
+\Rightarrow log_g(ab) \equiv x+y \pmod{\phi(n)} \
+\Rightarrow log_g(ab) \equiv log_g(a)+log_g(b) \pmod{\phi(n)} \
+$</li>
+<li>$log_g(a^m) \equiv m \times log_g(a) \pmod{\phi(n)} $   <br />
+proof: <br />
+$
+a^m \equiv g^{xm} \pmod{n}  \
+\Rightarrow log_g(a^m) \equiv mx \pmod{\phi(n)}  \
+\Rightarrow log_g(a^m) \equiv m \times log_g(a) \pmod{\phi(n)}  \
+$</li>
+<li>$log_h(a) \equiv log_h(g) \times log_g(a) \pmod{\phi(n)} $  <br />
+proof: <br />
+设 $g\equiv h^t \pmod{n}, t=log_h(g), 0 \leq t \leq \phi(n) $ <br />
+$
+a \equiv g^x \pmod{n} \
+\Rightarrow a\equiv h^{tx} \pmod{n} \
+\Rightarrow log_h(a) \equiv tx \pmod{\phi(n)}  \
+\Rightarrow log_h(a) \equiv log_h(g) \times log_g(a) \pmod{\phi(n)}  \
+$</li>
+</ul>
+<h2 id="carmichael-funtion-推导的结论"><a class="header" href="#carmichael-funtion-推导的结论">Carmichael funtion 推导的结论</a></h2>
+<p>Carmichael function 表示为 $\lambda(n)$, n的唯一质因子分解为 $n=p_1^{e_1}p_2^{e_2}\cdots p_r^{e_r} $  <br />
+则 $\lambda(n)=lcm[\lambda(p_1^{e_1}), \lambda(p_2^{e_2}),\cdots,\lambda(p_r^{e_r})] $.</p>
+<p><strong>Carmichael funtion在 $Z_n^*$ 的结论：</strong> <br />
+$Z_n^<em>$ 的阶是 $\phi(n)$, $Z_n^</em>$的元素的最大阶为 $\lambda(n)$.</p>
+<h2 id="置换"><a class="header" href="#置换">置换</a></h2>
+<p>一个有限集合 S 到自身的双射称为 S 的一个置换，集合 \( S={a_1,a_2,\cdots,a_n} \)上的置换可以表示为
+\[ f=\begin{pmatrix}
+a_1,a_2,\cdots,a_n \\
+a_{p_1},a{p_2},\cdots,a{p_n}
+\end{pmatrix}
+\]
+意为将 \( a_i \)映射为 \( a_{p_i} \), 其中 \( p_1,p_2,\cdots,p_n \) 是 \( 1,2,\cdots,n \)的一个排列。显然 S 上的所有置换的数量为 n!。</p>
+<p>所以置换的本质就是一个双射函数。</p>
+<h2 id="对称群-symmetric-group-和-置换群-permutation-group"><a class="header" href="#对称群-symmetric-group-和-置换群-permutation-group">对称群 (symmetric group) 和 置换群 (permutation group)</a></h2>
+<p>给定一个集合 M, 集合M的所有<strong>可逆置换</strong>构成集合 N, N 关于可逆置换的复合（函数的复合也可以看作是两个函数间的二元运算）满足封闭性，结合律，有单位元 (恒等置换，即每个元素映射到它自己)，有逆元 (交换置换表示中的上下两行)，因此构成一个群，称为 M 的对称群，记为\( Sym(M) \).</p>
+<p>\( Sym(M) \)的任一子群称为 M 的置换群。</p>
+<p>如果 M 是包含 n 个元素的有限集， 称其到自身的可逆映射为 <strong>n阶置换</strong> (permutation)， 其对称群称为 <strong>n阶对称群</strong>(sysmmetric group of degree n).</p>
+<p>举个例子： 假设我们有集合 M={1,2,3}, 所有的置换就是对集合M做全排列，结果如下： <br />
+\(
+\begin{pmatrix}
+1,2,3 \\
+1,2,3
+\end{pmatrix}
+\begin{pmatrix}
+1,2,3 \\
+2,1,3
+\end{pmatrix}
+\begin{pmatrix}
+1,2,3 \\
+3,1,2
+\end{pmatrix}
+\begin{pmatrix}
+1,2,3 \\
+1,3,2
+\end{pmatrix}
+\begin{pmatrix}
+1,2,3 \\
+2,3,1
+\end{pmatrix}
+\begin{pmatrix}
+1,2,3 \\
+3,2,1
+\end{pmatrix}
+\)</p>
+<p>以上这六个置换就是就是对称群的元素集合，集合的运算就是对映射函数进行复合操作，单位元就是第一个元素（恒等置换），逆元就是把每一个置换表达中的上下两行交换得到的新的映射函数，而且每次进行复合操作得到的映射函数都是上面的置换之一，且复合函数满足结合律。</p>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ul>
+<li><a href="http://sparkandshine.net/algebraic-structure-primer-group-ring-field-vector-space/">代数结构入门：群、环、域、向量空间</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Permutation">wiki: Permutation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Permutation_group">wiki: Permutation group</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Symmetric_group">wiki: Symmetric group</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection">wiki: Bijection, injection and surjection</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/402197369">知乎:排列与对称群</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E7%A7%B0%E7%BE%A4_(n%E6%AC%A1%E5%AF%B9%E7%A7%B0%E7%BE%A4)">wiki: 对称群</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%BD%AE%E6%8D%A2%E7%BE%A4">wiki:置换群</a></li>
+<li><a href="https://oi-wiki.org/math/group-theory/">oi-wiki: 群论</a></li>
+<li><a href="https://math.fandom.com/zh/wiki/%E5%B0%8D%E7%A8%B1%E7%BE%A4?variant=zh-sg">fandom-wiki: 对称群</a></li>
+<li><a href="https://www.bilibili.com/video/BV1zZ4y1p793/">bilibili: 复合函数结合律的证明</a></li>
+<li><a href="https://www.dcode.fr/permutations-generator">permutation-generator</a></li>
+<li><a href="https://www.bilibili.com/video/BV1qs4y1s7kv/?p=2&amp;spm_id_from=pageDriver&amp;vd_source=950e7977d383cac0e43e8756252ddf3f">bilibili: Alice-Bob 群论</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../mathmatics/crt.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../mathmatics/affine_transfer.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../mathmatics/crt.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../mathmatics/affine_transfer.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
