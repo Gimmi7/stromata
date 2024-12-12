@@ -11,3 +11,4 @@ k 为任意整数，d = gcd(a,b)
 ## References
 
 * [wiki: Bezout's identity](https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity)
+* [辗转相除法证贝祖定理](https://xiaocairush.github.io/math/number-theory/bezouts/#_2)

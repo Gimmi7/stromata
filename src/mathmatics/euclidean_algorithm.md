@@ -17,19 +17,22 @@ a-b的过程中，a一直都比b大，除非做了 \\( \lfloor\frac{a}{b}\rfloor
   gcd(a,b)=
   \begin{cases}
   a, & if \ b=0   \\\\
-  gcd(a, a \bmod b), &  others
+  gcd(b, a \bmod b), &  otherwise
   \end{cases}
 \\]
 
 ## 算法实现
 
-```c++
-int gcd(int a, int b){
-  if (b==0){
-    return a;
-  }else{
-    return gcd(b, a % b);
-  }
+```rust,editable
+fn main() {
+    println!("{}", euclidean_gcd(8, 4));
+}
+
+fn euclidean_gcd(a: i32, b: i32) -> i32 {
+    if b == 0 {
+        return a;
+    }
+    euclid_gcd(b, a % b)
 }
 ```
 
