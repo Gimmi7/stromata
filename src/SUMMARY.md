@@ -22,6 +22,7 @@
   - [拉格朗日插值法](./mathmatics/lagrange_interpolation.md)
   - [泰勒公式](./mathmatics/taylor_formula.md)
   - [快速傅立叶变换](./mathmatics/fft.md)
+  - [Montgemery](./mathmatics/montgomery.md)
 - [ZK-Paillier](./zkpaillier/index.md)
   - [Zero encrypt proof](./zkpaillier/zero_enc_proof.md)
   - [Correct ciphertext proof](./zkpaillier/correct_ciphertext.md)
